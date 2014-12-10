@@ -1,0 +1,253 @@
+@charset "UTF-8";
+
+@font-face {
+  font-family: "simplethingio";
+  src:url("fonts/simplethingio.eot");
+  src:url("fonts/simplethingio.eot?#iefix") format("embedded-opentype"),
+    url("fonts/simplethingio.woff") format("woff"),
+    url("fonts/simplethingio.ttf") format("truetype"),
+    url("fonts/simplethingio.svg#simplethingio") format("svg");
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+[data-icon]:before {
+  font-family: "simplethingio" !important;
+  content: attr(data-icon);
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+[class^="icon-"]:before,
+[class*=" icon-"]:before {
+  font-family: "simplethingio" !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-pin-2:before {
+  content: "a";
+}
+.icon-lock-1:before {
+  content: "b";
+}
+.icon-edit-1:before {
+  content: "c";
+}
+.icon-zoom-area:before {
+  content: "d";
+}
+.icon-scissor-1:before {
+  content: "e";
+}
+.icon-magnifier:before {
+  content: "f";
+}
+.icon-lock-unlock-1:before {
+  content: "g";
+}
+.icon-clip-1:before {
+  content: "h";
+}
+.icon-hand-touch-2:before {
+  content: "i";
+}
+.icon-anchor-point-1:before {
+  content: "j";
+}
+.icon-anchor-point-2:before {
+  content: "k";
+}
+.icon-ruler-1:before {
+  content: "l";
+}
+.icon-roller:before {
+  content: "m";
+}
+.icon-magic-wand-2:before {
+  content: "n";
+}
+.icon-magic-wand-1:before {
+  content: "o";
+}
+.icon-layers:before {
+  content: "p";
+}
+.icon-shear-tool:before {
+  content: "q";
+}
+.icon-vector:before {
+  content: "r";
+}
+.icon-stationery-3:before {
+  content: "s";
+}
+.icon-heart-broken:before {
+  content: "t";
+}
+.icon-heart-angel:before {
+  content: "u";
+}
+.icon-trophy:before {
+  content: "v";
+}
+.icon-award-4:before {
+  content: "w";
+}
+.icon-profile-1:before {
+  content: "x";
+}
+.icon-id-7:before {
+  content: "y";
+}
+.icon-id-4:before {
+  content: "z";
+}
+.icon-delete-3:before {
+  content: "A";
+}
+.icon-delete-1:before {
+  content: "B";
+}
+.icon-delete-tag:before {
+  content: "C";
+}
+.icon-delete-4:before {
+  content: "F";
+}
+.icon-minus-1:before {
+  content: "D";
+}
+.icon-inbox-1:before {
+  content: "E";
+}
+.icon-document-box-1:before {
+  content: "G";
+}
+.icon-arrow-57:before {
+  content: "H";
+}
+.icon-arrow-57-1:before {
+  content: "I";
+}
+.icon-brightness-low:before {
+  content: "J";
+}
+.icon-brightness-high:before {
+  content: "K";
+}
+.icon-alarm-off:before {
+  content: "L";
+}
+.icon-alarm-snooze:before {
+  content: "M";
+}
+.icon-alarm-1:before {
+  content: "N";
+}
+.icon-bell:before {
+  content: "O";
+}
+.icon-timer:before {
+  content: "P";
+}
+.icon-marker-pin-location:before {
+  content: "Q";
+}
+.icon-bug-1:before {
+  content: "R";
+}
+.icon-construction-sign:before {
+  content: "S";
+}
+.icon-alt-mac:before {
+  content: "T";
+}
+.icon-alt-windows:before {
+  content: "U";
+}
+.icon-enter-2:before {
+  content: "V";
+}
+.icon-backward-delete:before {
+  content: "W";
+}
+.icon-pulse-graph-1:before {
+  content: "X";
+}
+.icon-heartpulse:before {
+  content: "Y";
+}
+.icon-switch-2:before {
+  content: "Z";
+}
+.icon-setting-adjustment:before {
+  content: "0";
+}
+.icon-wrench:before {
+  content: "1";
+}
+.icon-switch-2-1:before {
+  content: "2";
+}
+.icon-switch-1:before {
+  content: "3";
+}
+.icon-loading:before {
+  content: "4";
+}
+.icon-scale-tool-1:before {
+  content: "5";
+}
+.icon-move-diagonal-1:before {
+  content: "6";
+}
+.icon-scale-spread-1:before {
+  content: "7";
+}
+.icon-bubble-chat-1:before {
+  content: "8";
+}
+.icon-bubble-chat-2:before {
+  content: "9";
+}
+.icon-add-4:before {
+  content: "!";
+}
+.icon-add-1:before {
+  content: "\"";
+}
+.icon-add-3:before {
+  content: "#";
+}
+.icon-add-tag:before {
+  content: "$";
+}
+.icon-add-4-1:before {
+  content: "%";
+}
+.icon-add-3-1:before {
+  content: "&";
+}
+.icon-add-1-1:before {
+  content: "'";
+}
+.icon-add-2:before {
+  content: "(";
+}
+.icon-menu:before {
+  content: ")";
+}

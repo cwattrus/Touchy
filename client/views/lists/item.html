@@ -1,0 +1,26 @@
+<template name="itemExpanded">
+  <div class="touch-point-expanded">
+    <div class="item-overlay overlay">
+      <div class="touch-point-container">
+        {{> item this}}
+        <ul class="options">
+          <li><i class="icon-document-box-1 archive bounceIn"></i></li>
+        </ul>
+
+        {{> comments}}
+      </div>
+    </div>
+  </div>
+</template>
+
+<template name="comments">
+  <div class="comments">
+    <ul>
+      {{#each comments}}
+        <li>{{this.comment}}</li>
+      {{/each}}
+    </ul>
+    <i class="icon-bubble-chat-1 new-comment"></i><input type="text" class="new-comment new-comment-text" placeholder="Comment..." />
+    <button class="post-comment"><i class="icon-enter-2"></i></button>
+  </div>
+</template>

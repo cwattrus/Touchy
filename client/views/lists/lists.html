@@ -1,0 +1,9 @@
+<template name="points">
+  <div class="container lists">
+    {{#each points}}
+      {{> tile this}}
+    {{/each}}
+    {{> itemExpanded}}
+    <div class="clear"></div>
+  </div>
+</template>

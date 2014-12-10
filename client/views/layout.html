@@ -1,0 +1,31 @@
+<head>
+  <title>Touch Points | Customer Experience</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+</head>
+
+<body>
+</body>
+
+<template name="layout">  
+  {{#if currentUser}}
+  <div class="actions">
+    <div class="new-list-icon icon-menu"></div>
+    <div class="popover new-list-popover">New List</div>
+    <div class="logout-button icon-lock-1"></div>
+    <div class="popover logout-popover">Logout</div>
+  </div>
+  {{else}}
+  <nav class="navbar">
+    <div class="logo">
+      <img class="mono" src="/images/logo.png" />
+      <div class="logo-text">
+        <!-- <img src="/logo-text.png" /> -->
+      </div>
+    </div>
+  </nav>
+  {{/if}}
+  {{>yield}}
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,800' rel='stylesheet' type='text/css'>
+
+</template>
