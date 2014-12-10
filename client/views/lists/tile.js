@@ -1,7 +1,12 @@
 Template.tile.rendered = function() {
     Deps.autorun(function () {
       $("input").autosizeInput();
+
     });
+
+    var el = document.getElementById(this.data._id);
+    enableSorting(el);
+    console.log("Create sortable");
 }
 
 Template.tile.events({
@@ -25,7 +30,8 @@ Template.tile.events({
   },
   'click .archive':function(event, template) {
     archiveList(this._id);
-    toggleMenu(template.find(".menu"), template.find(".menu-toggle"))
+    toggleMenu(template.find(".menu"), template.find(".menu-toggle"));
+    resetWidth();
   },
   'click .incognito': function(event, template) {
     toggleIncognito(this);
@@ -61,12 +67,12 @@ function toggleMenu(elem, menuIcon) {
 Template.item.events({
   'click .item': function(event, template) {
     if(!event.isDefaultPrevented()) {
-        var colors = ["red", "green", "blue", "white"];
+        var colors = ["red", "orange", "yellow", "blue", "green", "white", ];
         var color = this.color;
 
         if(color) {
           var currentColorIndex = colors.indexOf(color);
-          if(currentColorIndex<3){
+          if(currentColorIndex<5){
             newColorIndex = currentColorIndex + 1;
           }
           else {
@@ -91,10 +97,27 @@ Template.item.events({
 
 Template.tile.helpers({
   'items': function() {
-    return Items.find({"list":this._id, "archive": {$ne: true}});
+    // Start priority at 0
+    var prettyPriority = 0;
+    // Prioritise issues with priority first
+    var sortedPrioritisedItems = Items.find( { "list": this._id, "index": {$ne: null}, "archive" : {$ne : true}}, { sort:  {'index': 1 }} );
+    sortedPrioritisedItems.forEach(function(item) {
+      console.dir(item);
+      check(item, Object);
+
+      Items.update({_id: item._id}, {$set: {"index":prettyPriority}});
+      prettyPriority++;
+    });
+    // Prioritise new issues last
+    var sortedUnprioritisedItems = Items.find( { "list": this._id, index: null}, { sort:  {'index': 1 }} );
+    sortedUnprioritisedItems.forEach(function(item) {
+      console.log(item._id);
+      Items.update({_id: item._id}, {$set: {"index":prettyPriority}});
+      prettyPriority++;
+    });
+    return Items.find({"list":this._id, "archive": {$ne: true}}, { sort : { "index" : 1 } });
   },
   'incognito_state': function() {
-    console.log(this.incognito);
     if(this.incognito) return 'incognito';
   },
   'listColor': function() {

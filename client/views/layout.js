@@ -17,10 +17,11 @@ Template.layout.events({
       if (!e) var e = window.event;
 	    var relTarg = e.relatedTarget || e.toElement;
       var actionTargets = ["new-list-icon", "actions active", "logout-button icon-lock-1"];
-      if(actionTargets.indexOf(relTarg.className)<0) {
-          console.dir(relTarg);
+      if(relTarg) {
+        if(actionTargets.indexOf(relTarg.className)<0) {
           $(".logout-button").hide();
           $(".actions").removeClass("active");
+        }
       }
   },
 
@@ -28,7 +29,8 @@ Template.layout.events({
     var newIndex = Lists.find({"owner": Meteor.userId()}).count();
     Lists.insert({"owner": Meteor.userId(),"name": "New Touch Point", "index": newIndex},
       function() {
-          window.scrollTo(0,document.body.scrollHeight);
+          window.scrollTo(document.body.scrollWidth, document.body.scrollWidth);
+          resetWidth();
       }
     );
   },
@@ -36,3 +38,7 @@ Template.layout.events({
     Meteor.logout();
   }
 })
+
+Template.layout.rendered = function() {
+  resetWidth();
+}

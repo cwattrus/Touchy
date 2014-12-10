@@ -1,5 +1,5 @@
 <template name="tile">
-  <div class="tile {{isLarge}}" id="{{this._id}}">
+  <div class="tile {{isLarge}}">
     <div class="hidden overlay {{#if owner}}{{ incognito_state }}{{/if}}">
       <i class="icon-switch-2-1 incognito"></i>
     </div>
@@ -21,20 +21,17 @@
       <input class="name" type="text" value="{{this.name}}"/>
     </div>
     {{> menu}}
-    <ul class="items">
+    <ul class="items" id="{{this._id}}">
       {{#each items}}
         {{> item this}}
       {{/each}}
-      <li>
-        <input class="new-item" type="text" value="" placeholder="Touch point..." />
-      </li>
     </ul>
-
+    <input class="new-item" type="text" value="" placeholder="Touch point..." />          
   </div>
 </template>
 
 <template name="item">
-  <li class="item {{this.color}}">{{this.name}} <i class="icon-scale-spread-1 bounceIn expand"></i></li>
+  <li class="item {{this.color}}" data-id="{{this.index}}" id="{{this._id}}">{{this.name}} <i class="icon-scale-spread-1 bounceIn expand"></i></li>
 </template>
 
 <template name="menu">
@@ -42,9 +39,9 @@
   <div class="menu">
     <ul>
       <!-- <li><i class="icon-id-7"></i> Share</li> -->
-      {{#if owner}}<li class="incognito"><i class="icon-switch-2"></i> Incognito</li>{{/if}}
-      {{#if owner}}<li class="share"><i class="icon-id-7"></i> Add collaborator</li>{{/if}}
-      {{#if collaborator}}<li class=""><i class="icon-id-7"></i> You're a collaborator on this list.<br><small>This feature is still in <strong>beta</strong> and so could be unstable.</small></li>{{/if}}
+      <!-- {{#if owner}}<li class="incognito"><i class="icon-switch-2"></i> Incognito</li>{{/if}} -->
+      <!-- {{#if owner}}<li class="share"><i class="icon-id-7"></i> Add collaborator</li>{{/if}} -->
+      <!-- {{#if collaborator}}<li class=""><i class="icon-id-7"></i> You're a collaborator on this list.<br><small>This feature is still in <strong>beta</strong> and so could be unstable.</small></li>{{/if}} -->
       <!-- <li class="unlock-step-1"><i class="icon-lock-1"></i> Lock</li> -->
       {{#if owner}}<li class="archive"><i class="icon-document-box-1"></i> Archive</li>{{/if}}
     </ul>

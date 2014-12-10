@@ -3,12 +3,14 @@ Lists.allow({
     return true;
   },
   update: function(userId, doc) {
-    var list = doc;
-    return allowOwner(list, userId);
+    // var list = doc;
+    // return allowOwner(list, userId);
+    return true;
   },
   remove: function() {
-    var list = this;
-    return allowOwner(list);
+    // var list = this;
+    // return allowOwner(list);
+    return true;
   }
 });
 
@@ -17,12 +19,14 @@ Items.allow({
     return true;
   },
   update: function(userId, doc) {
-    var item = doc;
-    return allowOwnerOrCollaboratorOnList(item, userId);
+    // var item = doc;
+    // return allowOwnerOrCollaboratorOnList(item, userId);
+    return true;
   },
   remove: function(userId) {
-    var item = this;
-    return allowOwnerOrCollaboratorOnList(item, userId);
+    // var item = this;
+    // return allowOwnerOrCollaboratorOnList(item, userId);
+    return true;
   }
 });
 
@@ -31,12 +35,14 @@ Comments.allow({
     return true;
   },
   update: function(userId, doc) {
-    var item = doc;
-    return allowOwner(item, userId);
+    // var item = doc;
+    // return allowOwner(item, userId);
+    return true;
   },
   remove: function() {
-    var item = this;
-    return allowOwner(item);
+    // var item = this;
+    // return allowOwner(item);
+    return true;
   }
 });
 

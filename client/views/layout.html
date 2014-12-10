@@ -4,10 +4,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 </head>
 
-<body>
-</body>
-
-<template name="layout">  
+<template name="layout">
   {{#if currentUser}}
   <div class="actions">
     <div class="new-list-icon icon-menu"></div>
@@ -25,7 +22,9 @@
     </div>
   </nav>
   {{/if}}
-  {{>yield}}
+  <div class="page">
+    {{>yield}}
+  </div>
   <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,800' rel='stylesheet' type='text/css'>
 
 </template>

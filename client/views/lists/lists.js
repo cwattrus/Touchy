@@ -3,3 +3,7 @@ Template.points.helpers({
     return Lists.find({"archive" : {$ne : true}}, {sort: {"index": 1}});
   }
 });
+
+Template.points.rendered = function() {
+
+}
