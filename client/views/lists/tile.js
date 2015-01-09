@@ -97,24 +97,7 @@ Template.item.events({
 
 Template.tile.helpers({
   'items': function() {
-    // Start priority at 0
-    var prettyPriority = 0;
-    // Prioritise issues with priority first
-    var sortedPrioritisedItems = Items.find( { "list": this._id, "index": {$ne: null}, "archive" : {$ne : true}}, { sort:  {'index': 1 }} );
-    sortedPrioritisedItems.forEach(function(item) {
-      console.dir(item);
-      check(item, Object);
-
-      Items.update({_id: item._id}, {$set: {"index":prettyPriority}});
-      prettyPriority++;
-    });
-    // Prioritise new issues last
-    var sortedUnprioritisedItems = Items.find( { "list": this._id, index: null}, { sort:  {'index': 1 }} );
-    sortedUnprioritisedItems.forEach(function(item) {
-      console.log(item._id);
-      Items.update({_id: item._id}, {$set: {"index":prettyPriority}});
-      prettyPriority++;
-    });
+    sortList();
     return Items.find({"list":this._id, "archive": {$ne: true}}, { sort : { "index" : 1 } });
   },
   'incognito_state': function() {
