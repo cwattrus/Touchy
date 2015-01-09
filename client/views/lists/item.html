@@ -6,7 +6,6 @@
         <ul class="options">
           <li><i class="icon-document-box-1 archive bounceIn"></i></li>
         </ul>
-
         {{> comments}}
       </div>
     </div>
@@ -17,10 +16,14 @@
   <div class="comments">
     <ul>
       {{#each comments}}
-        <li>{{this.comment}}</li>
+        <li class="comment {{this.color}}">{{this.comment}}</li>
       {{/each}}
     </ul>
     <i class="icon-bubble-chat-1 new-comment"></i><input type="text" class="new-comment new-comment-text" placeholder="Comment..." />
     <button class="post-comment"><i class="icon-enter-2"></i></button>
   </div>
+</template>
+
+<template name="item">
+  <li class="item {{this.color}}" data-id="{{this.index}}" id="{{this._id}}">{{this.name}} <i class="icon-scale-spread-1 bounceIn expand"></i></li>
 </template>

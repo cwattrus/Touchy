@@ -29,6 +29,29 @@ Template.comments.events({
       postComment(this, comment);
     }
   },
+  'click .comment': function(event, template) {
+    // if(!event.isDefaultPrevented()) {
+      var colors = ["red", "orange", "yellow", "blue", "green", "white", ];
+      var color = this.color;
+      console.log(color);
+      if(color) {
+        var currentColorIndex = colors.indexOf(color);
+        if(currentColorIndex<5){
+          newColorIndex = currentColorIndex + 1;
+        }
+        else {
+          newColorIndex = 0;
+        }
+        color = colors[newColorIndex];
+        Comments.update({"_id": this._id}, {$set : {"color": color}});
+      }
+      else {
+        console.log("red");
+        color = "red";
+        Comments.update({"_id": this._id}, {$set : {"color": color}});
+      }
+    // }
+  },
 
 })
 
