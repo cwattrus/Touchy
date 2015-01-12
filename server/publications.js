@@ -31,5 +31,5 @@ Meteor.publish('items', function() {
 });
 
 Meteor.publish('comments', function() {
-  return Comments.find({});
+  return Comments.find({"archive": {$ne: true}});
 });

@@ -110,9 +110,6 @@ Template.tile.helpers({
     if(this.owner==Meteor.userId()) return true;
     return false;
   },
-  'isLarge':function() {
-    if(Items.find({"list":this._id, "archive": {$ne: true}}).count()>11) return "large";
-  }
 });
 
 Template.menu.helpers({

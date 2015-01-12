@@ -23,6 +23,10 @@ Template.comments.events({
     var comment = $(template.find('.new-comment-text'));
     postComment(this, comment);
   },
+  'click .archive-comment': function(event, template) {    
+    event.preventDefault();
+    Comments.update({"_id": this._id}, {$set : {"archive": true}});
+  },
   'keyup .new-comment-text': function(event, template) {
     if (event.which === 13) {
       var comment = $(template.find('.new-comment-text'));
@@ -33,7 +37,6 @@ Template.comments.events({
     // if(!event.isDefaultPrevented()) {
       var colors = ["red", "orange", "yellow", "blue", "green", "white", ];
       var color = this.color;
-      console.log(color);
       if(color) {
         var currentColorIndex = colors.indexOf(color);
         if(currentColorIndex<5){
@@ -46,7 +49,6 @@ Template.comments.events({
         Comments.update({"_id": this._id}, {$set : {"color": color}});
       }
       else {
-        console.log("red");
         color = "red";
         Comments.update({"_id": this._id}, {$set : {"color": color}});
       }
