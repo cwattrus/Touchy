@@ -3,9 +3,13 @@ Template.layout.events({
     $(".logout-button").show();
     $(".actions").addClass("active");
     $(".new-list-popover").show();
+    $(".sidebar").show();
+    $(".sidebar").addClass("bounceInLeft");
   },
   'mouseout .new-list-icon': function() {
     $(".new-list-popover").hide();
+    $(".sidebar").removeClass("bounceInLeft");
+    $(".sidebar").addClass("bounceOutLeft");
   },
   'mouseover .logout-button': function() {
     $(".logout-popover").show();
