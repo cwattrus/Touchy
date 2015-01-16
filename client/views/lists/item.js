@@ -15,7 +15,11 @@ Template.itemExpanded.events({
     var overlay = $(template.find('.overlay'));
     overlay.toggleClass("active");
     Router.go("points");
-  }
+  },
+  'keyup .item-edit': function(event, template) {
+    var item = $(template.find('.item-edit'));
+    editItem(this, item);
+  },
 })
 
 Template.comments.events({
@@ -23,7 +27,7 @@ Template.comments.events({
     var comment = $(template.find('.new-comment-text'));
     postComment(this, comment);
   },
-  'click .archive-comment': function(event, template) {    
+  'click .archive-comment': function(event, template) {
     event.preventDefault();
     Comments.update({"_id": this._id}, {$set : {"archive": true}});
   },
@@ -56,6 +60,14 @@ Template.comments.events({
   },
 
 })
+
+
+function editItem(item, itemElement) {
+  var itemText = itemElement.val();
+  check(itemText, String);
+  console.log(item._id);
+  Items.update({"_id": item._id}, {$set : {"name": itemText}});
+}
 
 function postComment(item, comment) {
   var commentText = comment.val();

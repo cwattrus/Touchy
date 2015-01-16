@@ -2,17 +2,24 @@
   <title>Touch Points | Customer Experience</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link href="https://fontastic.s3.amazonaws.com/pEqu8kpiTd9wEGeJgtA4b4/icons.css" rel="stylesheet">
 </head>
 
 <template name="layout">
-  <div class="sidebar animated">
+  <!-- <div class="menu hide">
+    <div class="menu icon-menu"></div>
+  </div> -->
+  <div class="sidebar animated bounceInLeft">
     <ul>
       <li>New list</li>
     </ul>
+    <button class="new-list-icon"><i class="icon-flow"></i> New Flow</button>
+    <button class="close-menu">Close</button>
+    <button class="logout"><i class="icon-power"></i> Logout</button>
   </div>
   {{#if currentUser}}
   <div class="actions">
-    <div class="new-list-icon icon-menu"></div>
+    <div class="new-list-icon icon-add"></div>
     <div class="popover new-list-popover">New List</div>
     <div class="logout-button icon-lock-1"></div>
     <div class="popover logout-popover">Logout</div>

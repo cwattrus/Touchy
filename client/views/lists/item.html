@@ -1,11 +1,10 @@
 <template name="itemExpanded">
   <div class="touch-point-expanded">
     <div class="item-overlay overlay">
+      <div class="up-level"><i class="icon-up"></i> Back to flow</div>
       <div class="touch-point-container">
-        {{> item this}}
-        <ul class="options">
-          <li><i class="icon-document-box-1 archive bounceIn"></i></li>
-        </ul>
+        {{> editableItem this}}
+        <button class="archive"><i class="icon-briefcase archive bounceIn"></i> Archive</button>
         {{> comments}}
       </div>
     </div>
@@ -16,14 +15,19 @@
   <div class="comments">
     <ul>
       {{#each comments}}
-        <li class="comment {{this.color}}">{{this.comment}}<i class="archive-comment icon-document-box-1"></i></li>
+        <li class="comment {{this.color}}">{{this.comment}}<i class="archive-comment icon-briefcase"></i></li>
       {{/each}}
     </ul>
     <i class="icon-bubble-chat-1 new-comment"></i><input type="text" class="new-comment new-comment-text" placeholder="Comment..." />
-    <button class="post-comment"><i class="icon-enter-2"></i></button>
+    <button class="post-comment"><i class="icon-enter"></i></button>
   </div>
 </template>
 
 <template name="item">
-  <li class="item {{this.color}}" data-id="{{this.index}}" id="{{this._id}}">{{this.name}} <i class="icon-scale-spread-1 bounceIn expand"></i></li>
+  <li class="item {{this.color}}" data-id="{{this.index}}" id="{{this._id}}">{{this.name}} <i class="icon-open bounceIn expand"></i></li>
 </template>
+
+<template name="editableItem">
+  <li class="item {{this.color}}" data-id="{{this.index}}" id="{{this._id}}">
+    <input value="{{this.name}}" class="item-edit"/></li>
+  </template>

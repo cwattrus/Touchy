@@ -1,15 +1,15 @@
-Template.layout.events({
-  'mouseover .new-list-icon': function() {
-    $(".logout-button").show();
-    $(".actions").addClass("active");
-    $(".new-list-popover").show();
-    $(".sidebar").show();
-    $(".sidebar").addClass("bounceInLeft");
+Template.layout.events({  
+  'click .menu': function() {
+      $(".sidebar").addClass("active");
+      $(".sidebar").removeClass("bounceOutLeft");
+      $(".sidebar").addClass("bounceInLeft");
+      $(".sidebar").show();
   },
-  'mouseout .new-list-icon': function() {
-    $(".new-list-popover").hide();
+  'click .close-menu': function() {
+    $(".sidebar").removeClass("active");
     $(".sidebar").removeClass("bounceInLeft");
     $(".sidebar").addClass("bounceOutLeft");
+    $(".sidebar").show();
   },
   'mouseover .logout-button': function() {
     $(".logout-popover").show();
