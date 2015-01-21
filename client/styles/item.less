@@ -87,8 +87,6 @@
           margin-bottom: 3px;
 
           i {
-            position: relative;
-            right: -314px;
             cursor: pointer;
           }
         }
@@ -151,13 +149,13 @@
   box-shadow:         0px 2px 4px 0px rgba(0,0,0,0.12);
   color: #6F6F6F;
   cursor: pointer;
-  padding: 13px 16px 0px 16px;
+  padding: 13px 16px 13px 16px;
   font-size: 13pt;
   font-weight: 300;
   display: block;
   min-width: 100px;
   max-width: 300px;
-  min-height: 40px;
+  min-height: 25px;
   margin-right: 4px;
   margin-bottom: 10px;
 
@@ -166,8 +164,8 @@
     cursor: pointer;
     display: none;
     font-size: 16pt;
-    float: right;
     margin-top: 4px;
+    background: inherit;
 
     &:hover {
       color: #333;
@@ -176,17 +174,20 @@
 
   &:hover {
     i {
-      display: inline-block;
       padding-right: 0px;
       line-height: 0px;
-      position: relative;
-      top: 0px;
-      right: -5px;
+      display: inline-block;
+      position: absolute;
+      top: 13px;
+      right: 8px;
+      width: 30px;
+      height: 25px;
+      text-align: center;
     }
   }
 }
 
-.item, .touch-point-expanded .touch-point-container .comments ul li.comment {
+.item, .touch-point-expanded .touch-point-container .comments ul li.area {
   &.green {
     background-color: #03d689;
     color: white;
@@ -220,7 +221,7 @@
 
 input {
   border: 0;
-  color: #666;
+  color: inherit;
   font-weight: 300;
   font-size: 11pt;
   padding: 9px 0px 9px 15px;
@@ -248,5 +249,34 @@ input {
 
   &.item-edit {
     background: transparent;
+  }
+}
+.area {
+  position: relative;
+
+  .area-text {
+    position: relative;
+    display: block;
+    left: 0px;
+    width: 360px;
+    background: inherit;
+  }
+
+  .archive-comment {
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    font-size: 18px;
+  }
+}
+
+.item {
+  position: relative;
+
+  .icon-open {
+    position: absolute;
+  }
+  .touch-point-text {
+    width: 277px;
   }
 }

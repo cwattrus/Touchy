@@ -3,6 +3,8 @@ Meteor.subscribe("lists", function() {
     resetWidth();
   };
 });
+Meteor.subscribe("flows");
 Meteor.subscribe("items");
-Meteor.subscribe("comments");
+Meteor.subscribe("areas");
+Meteor.subscribe("subareas")
 Meteor.subscribe("shared");

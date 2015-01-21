@@ -4,7 +4,7 @@
       <div class="up-level"><i class="icon-up"></i> Back to flow</div>
       <div class="touch-point-container">
         {{> editableItem this}}
-        <button class="archive"><i class="icon-briefcase archive bounceIn"></i> Archive</button>
+        <button class="archive"><i class="icon-briefcase archive bounceIn"></i> Archive touch point</button>
         {{> comments}}
       </div>
     </div>
@@ -14,17 +14,22 @@
 <template name="comments">
   <div class="comments">
     <ul>
-      {{#each comments}}
-        <li class="comment {{this.color}}">{{this.comment}}<i class="archive-comment icon-briefcase"></i></li>
+      {{#each areas}}
+        {{> area this}}
       {{/each}}
     </ul>
-    <i class="icon-bubble-chat-1 new-comment"></i><input type="text" class="new-comment new-comment-text" placeholder="Comment..." />
-    <button class="post-comment"><i class="icon-enter"></i></button>
+
+    <i class="icon-bubble-chat-1 new-comment"></i><input type="text" class="new-comment new-comment-text" placeholder="Area name..." />
+    <button class="post-comment">Add area <i class="icon-enter"></i></button>
   </div>
 </template>
 
+<template name="area">
+  <li class="area {{this.color}}"><input class="area-text" value="{{this.name}}"><i class="archive-comment icon-briefcase"></i></li>
+</template>
+
 <template name="item">
-  <li class="item {{this.color}}" data-id="{{this.index}}" id="{{this._id}}">{{this.name}} <i class="icon-open bounceIn expand"></i></li>
+  <li class="item {{this.color}}" data-id="{{this.index}}" id="{{this._id}}"><div class="touch-point-text">{{this.name}}</div> <i class="icon-open bounceIn expand"></i></li>
 </template>
 
 <template name="editableItem">

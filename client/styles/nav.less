@@ -1,3 +1,5 @@
+@import 'variables';
+
 nav.navbar {
   background: transparent;
   position: fixed;
@@ -82,4 +84,88 @@ nav.navbar {
   left: 0px;
   z-index: 8999;
   box-shadow: 2px 2px 2px rgba(0,0,0,0.1);
+
+  h1 {
+    font-weight: 300;
+    font-size: 18px;
+    text-align: center;
+    width: 100%;
+  }
+
+  img {
+    width: 100%;
+  }
+
+  .close-menu {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+
+    &:hover {
+      color: #666;
+    }
+  }
+
+  .logout {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    min-width: 12px;
+    padding: 13px 20px;
+    background: transparent;
+    color: #666;
+  }
+
+  ul {
+    list-style: none;
+    padding-left: 0px;
+
+    li {
+      margin-left: 0px;
+
+      button {
+        margin-top: 0px;
+        margin-bottom: 10px;
+        min-width: 250px;
+        width: 90%;
+        display: block;
+
+        &.btn-primary {
+          background-color: @primaryColor;
+
+          &:hover {
+            background-color: rgba(3, 151, 214, 0.9);
+          }
+        }
+      }
+    }
+  }
+}
+.menu {
+  background-color: white;
+  display: inline-block;
+  padding: 3px 8px;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 23px;
+  height: 100%;
+
+  .icon-arrange-2-1 {
+    font-size: 18px;
+    color: #666;
+    display: inline-block;
+    cursor: pointer;
+    padding: 13px;
+
+    &:hover {
+      background: rgba(3, 151, 214, 1);
+      color: white;
+    }
+  }
+}
+
+.page {
+  margin-left: 45px;
 }

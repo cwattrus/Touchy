@@ -1,4 +1,52 @@
+Flows.allow({
+  insert: function() {
+    return true;
+  },
+  update: function(userId, doc) {
+    // var list = doc;
+    // return allowOwner(list, userId);
+    return true;
+  },
+  remove: function() {
+    // var list = this;
+    // return allowOwner(list);
+    return true;
+  }
+});
+
 Lists.allow({
+  insert: function() {
+    return true;
+  },
+  update: function(userId, doc) {
+    // var list = doc;
+    // return allowOwner(list, userId);
+    return true;
+  },
+  remove: function() {
+    // var list = this;
+    // return allowOwner(list);
+    return true;
+  }
+});
+
+Areas.allow({
+  insert: function() {
+    return true;
+  },
+  update: function(userId, doc) {
+    // var list = doc;
+    // return allowOwner(list, userId);
+    return true;
+  },
+  remove: function() {
+    // var list = this;
+    // return allowOwner(list);
+    return true;
+  }
+});
+
+SubAreas.allow({
   insert: function() {
     return true;
   },
@@ -29,23 +77,6 @@ Items.allow({
     return true;
   }
 });
-
-Comments.allow({
-  insert: function() {
-    return true;
-  },
-  update: function(userId, doc) {
-    // var item = doc;
-    // return allowOwner(item, userId);
-    return true;
-  },
-  remove: function() {
-    // var item = this;
-    // return allowOwner(item);
-    return true;
-  }
-});
-
 
 function allowOwner(doc, userId) {
   if(Meteor.user()._id==doc.owner) {

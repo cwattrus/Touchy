@@ -6,16 +6,23 @@
 </head>
 
 <template name="layout">
-  <!-- <div class="menu hide">
-    <div class="menu icon-menu"></div>
-  </div> -->
+  <div class="menu hide">
+    <div class="menu icon-arrange-2-1"></div>
+  </div>
   <div class="sidebar animated bounceInLeft">
+    <img src="images/logo_menu.png" />
     <ul>
-      <li>New list</li>
+      <li><button class="new-flow btn btn-primary">Add flow</button></li>
     </ul>
-    <button class="new-list-icon"><i class="icon-flow"></i> New Flow</button>
-    <button class="close-menu">Close</button>
-    <button class="logout"><i class="icon-power"></i> Logout</button>
+    <h1>Your flows</h1>
+    <ul>
+      <li><button class="btn btn-secondary main-flow">Main flow</button></li>
+      {{#each flows}}
+        {{> flow this}}
+      {{/each}}
+    </ul>
+    <div class="close-menu"><i class="icon-delete"></i></div>
+    <button class="logout"><i class="icon-log-out"></i></button>
   </div>
   {{#if currentUser}}
   <div class="actions">
@@ -39,4 +46,8 @@
   </div>
   <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,800' rel='stylesheet' type='text/css'>
 
+</template>
+
+<template name="flow">
+  <li><button class="btn btn-secondary flow"><input class="editFlowName" value="{{this.name}}"></button></li>
 </template>

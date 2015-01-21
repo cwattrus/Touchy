@@ -1,4 +1,4 @@
-Template.layout.events({  
+Template.layout.events({
   'click .menu': function() {
       $(".sidebar").addClass("active");
       $(".sidebar").removeClass("bounceOutLeft");
@@ -11,38 +11,66 @@ Template.layout.events({
     $(".sidebar").addClass("bounceOutLeft");
     $(".sidebar").show();
   },
-  'mouseover .logout-button': function() {
-    $(".logout-popover").show();
+  'click .new-flow': function() {
+    Flows.insert({"name":"New Flow"});
   },
-  'mouseout .logout-button': function() {
-    $(".logout-popover").hide();
+  'click .main-flow': function() {
+    Session.set("flow", null);
   },
-  'mouseout .actions': function() {
-      if (!e) var e = window.event;
-	    var relTarg = e.relatedTarget || e.toElement;
-      var actionTargets = ["new-list-icon", "actions active", "logout-button icon-lock-1"];
-      if(relTarg) {
-        if(actionTargets.indexOf(relTarg.className)<0) {
-          $(".logout-button").hide();
-          $(".actions").removeClass("active");
-        }
-      }
-  },
-
   'click .new-list-icon': function() {
-    var newIndex = Lists.find({"owner": Meteor.userId()}).count();
-    Lists.insert({"owner": Meteor.userId(),"name": "New Touch Point", "index": newIndex},
-      function() {
+    var flow = Session.get("flow");
+    if(flow) {
+      var newIndex = Lists.find({"owner": Meteor.userId(), "flow": flow}).count();
+      Lists.insert({"owner": Meteor.userId(),"name": "New Touch Point", "index": newIndex, "flow": flow},
+        function() {
           window.scrollTo(document.body.scrollWidth, document.body.scrollWidth);
           resetWidth();
-      }
-    );
+        }
+      );
+    }
+    else {
+      var newIndex = Lists.find({"owner": Meteor.userId(), "flow" : {$exists : false}}).count();
+      Lists.insert({"owner": Meteor.userId(),"name": "New Touch Point", "index": newIndex},
+        function() {
+          window.scrollTo(document.body.scrollWidth, document.body.scrollWidth);
+          resetWidth();
+        }
+      );
+    }
+
+
   },
   'click .logout-button': function() {
     Meteor.logout();
   }
 })
 
+Template.layout.helpers({
+  'flows': function() {
+    return Flows.find({});
+  }
+})
+
 Template.layout.rendered = function() {
   resetWidth();
+}
+
+Template.flow.events({
+  'click .flow' : function(event, template) {
+    if(!event.isDefaultPrevented()) {
+      Session.set("flow", this._id);
+    }
+  },
+  'click .editFlowName' : function(event, template) {
+    event.preventDefault();
+  },
+  'keyup .editFlowName': function(event, template) {
+    var flowText = $(template.find('.editFlowName'));
+    editFlow(this._id, flowText.val());
+  },
+});
+
+function editFlow(flow, flowText) {
+  check(flowText, String);
+  Flows.update({"_id": flow}, {$set : {"name": flowText}});
 }
