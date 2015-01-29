@@ -1,3 +1,5 @@
+@import 'variables';
+
 .tile {
   display: inline-block;
   margin: 20px 0 0 15px;
@@ -6,6 +8,7 @@
   height: auto;
   position: relative;
   vertical-align: top;
+  font-family: @fontFace;
 
   &.large {
     width: 500px;
@@ -66,6 +69,7 @@
       color: white;
       -moz-box-shadow:    0px 2px 4px 0px rgba(0,0,0,0.22);
       box-shadow:         0px 2px 4px 0px rgba(0,0,0,0.22);
+      font-family: @fontFace;
 
       &:after, .arrow_box:before {
         left: 100%;
@@ -103,7 +107,7 @@
       }
 
       .name {
-          font-family: OpenSans-Light;
+          font-family: @fontFace;
           font-size: 23px;
           color: #fff;
           height: 30px;
@@ -123,6 +127,7 @@
         padding: 0 10px 0 10px;
         position: relative;
         z-index: 1;
+        font-family: @fontFace;
 
         &:focus {
           outline: none;

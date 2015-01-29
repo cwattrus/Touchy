@@ -17,6 +17,10 @@
     z-index: 1000;
   }
 
+  .comments {
+
+  }
+
   .up-level {
     border: 1px solid rgba(255,255,255,0.2);
     display: block;
@@ -36,8 +40,9 @@
   .touch-point-container {
     position: absolute;
     top: 27%;
-    left: 20%;
-    width: 100%;
+    left: 50%;
+    margin-left: -40%;
+    width: 80%;
 
     .item{
       padding: 10px 30px;
@@ -47,6 +52,67 @@
       }
     }
 
+    .area, .comment {
+      position: relative;
+
+      .area-text, .comment-text {
+        position: relative;
+        display: block;
+        left: 0px;
+        width: 360px;
+        background: inherit;
+      }
+
+      .archive-area, .archive-comment {
+        position: absolute;
+        right: 20px;
+        top: 15px;
+        font-size: 18px;
+      }
+
+      .person {
+        display:block;
+        color: white;
+      }
+    }
+
+    .column-left {
+      display: inline-block;
+      float: left;
+      width: 50%;
+    }
+
+    .column-right {
+      display: inline-block;
+      float: right;
+      width: 50%;
+    }
+
+    .comments {
+      border: 1px solid rgba(255,255,255,0.4);
+
+      ul li {
+        display:block;
+
+        input.comment-text {
+          position: inherit;
+          top: auto;
+          left: auto;
+          display: block;
+          background: transparent;
+        }
+      }
+      input.new-comment {
+        background: transparent;
+        border-bottom: 2px solid rgba(255,255,255,0.4);
+        margin-left: 20px;
+        display: block;
+      }
+      button.post-comment {
+        float: right;
+        margin-right: 24px;
+      }
+    }
 
     i.icon-open:before {
       content: "8";
@@ -70,7 +136,7 @@
       }
     }
 
-    .comments {
+    .areas, .comments {
       max-width: 400px;
       width: 100%;
 
@@ -92,11 +158,11 @@
         }
       }
 
-      i.new-comment {
+      i.new-area, i.new-comment {
         padding-right: 14px;
       }
 
-      input.new-comment {
+      input.new-area {
         background: rgba(255,255,255,0.2);
         border: 0;
         color: #666;
@@ -251,24 +317,6 @@ input {
     background: transparent;
   }
 }
-.area {
-  position: relative;
-
-  .area-text {
-    position: relative;
-    display: block;
-    left: 0px;
-    width: 360px;
-    background: inherit;
-  }
-
-  .archive-comment {
-    position: absolute;
-    right: 20px;
-    top: 15px;
-    font-size: 18px;
-  }
-}
 
 .item {
   position: relative;
@@ -278,5 +326,16 @@ input {
   }
   .touch-point-text {
     width: 277px;
+  }
+}
+
+.touch-point-expanded .touch-point-container .comments ul li {
+  background: transparent;
+  border-bottom: 1px solid rgba(255,255,255,0.3);
+  display:block;
+
+  input {
+    background: none;
+    color: white;
   }
 }

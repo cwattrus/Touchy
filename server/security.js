@@ -78,6 +78,22 @@ Items.allow({
   }
 });
 
+Comments.allow({
+  insert: function() {
+    return true;
+  },
+  update: function(userId, doc) {
+    // var item = doc;
+    // return allowOwnerOrCollaboratorOnList(item, userId);
+    return true;
+  },
+  remove: function(userId) {
+    // var item = this;
+    // return allowOwnerOrCollaboratorOnList(item, userId);
+    return true;
+  }
+});
+
 function allowOwner(doc, userId) {
   if(Meteor.user()._id==doc.owner) {
     return true;

@@ -3,10 +3,8 @@ Template.tile.rendered = function() {
       $("input").autosizeInput();
 
     });
-
     var el = document.getElementById(this.data._id);
     enableSorting(el);
-    console.log("Create sortable");
 }
 
 Template.tile.events({

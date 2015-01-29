@@ -30,19 +30,19 @@ Template.area.events({
   },
 });
 
-Template.comments.events({
-  'click .post-comment': function(event, template) {
-    var comment = $(template.find('.new-comment-text'));
-    createArea(this, comment);
+Template.areas.events({
+  'click .post-area': function(event, template) {
+    var area = $(template.find('.new-area-text'));
+    createArea(this, area);
   },
-  'click .archive-comment': function(event, template) {
+  'click .archive-area': function(event, template) {
     event.preventDefault();
     Areas.update({"_id": this._id}, {$set : {"archive": true}});
   },
-  'keyup .new-comment-text': function(event, template) {
+  'keyup .new-area-text': function(event, template) {
     if (event.which === 13) {
-      var comment = $(template.find('.new-comment-text'));
-      createArea(this, comment);
+      var area = $(template.find('.new-area-text'));
+      createArea(this, area);
     }
   },
   'click .area-text': function(event, template) {
@@ -80,7 +80,6 @@ function editArea(area, areaElement) {
 function editItem(item, itemElement) {
   var itemText = itemElement.val();
   check(itemText, String);
-  console.log(item._id);
   Items.update({"_id": item._id}, {$set : {"name": itemText}});
 }
 
@@ -91,8 +90,55 @@ function createArea(item, comment) {
   comment.val("");
 }
 
-Template.comments.helpers({
+Template.areas.helpers({
   "areas": function() {
     return Areas.find({"item": this._id});
   }
 });
+
+Template.comments.helpers({
+  "comments": function() {
+    return Comments.find({"item": this._id});
+  }
+});
+
+Template.comments.events({
+  'click .post-comment': function(event, template) {
+    var comment = $(template.find('.new-comment-text'));
+    createComment(this, comment);
+  },
+  'click .archive-comment': function(event, template) {
+    event.preventDefault();
+    Comments.update({"_id": this._id}, {$set : {"archive": true}});
+  },
+  'keyup .new-comment-text': function(event, template) {
+    if (event.which === 13) {
+      var comment = $(template.find('.new-comment-text'));
+      createComment(this, comment);
+    }
+  },
+  'click .new-comment-text': function(event, template) {
+    event.preventDefault();
+  }
+});
+
+Template.comment.events({
+  'keyup .comment-text': function(event, template) {
+    var comment = $(template.find('.comment-text'));
+    editComment(this, comment);
+  },
+});
+
+
+function editComment(comment, commentElement) {
+  var commentText = commentElement.val();
+  check(commentText, String);
+  Areas.update({"_id": comment._id}, {$set : {"name": commentText}});
+}
+
+function createComment(item, comment) {
+  var commentText = comment.val();
+  check(commentText, String);
+  Comments.insert({"item": item._id, "name": commentText, "person": Meteor.user().profile.name })
+  comment.val("");
+}
