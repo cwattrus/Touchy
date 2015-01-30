@@ -1,0 +1,55 @@
+<template name="touchpoint">
+  <overlay>
+    <box>
+      <touchpoints>
+        <ul>
+          <li class="title">BECOMING A MERCHANT</li>
+          <li>First login</li>
+          <li class="active">First access merchant portal</li>
+          <li>First End of Day</li>
+          <li>Your first settlement</li>
+        </ul>
+      </touchpoints>
+      <touchpoint>
+        <content>
+          <header>
+            <h1><state class="green"></state>First access merchant portal</h1>
+            <i class="icon-cloud-checked"></i>
+          </header>
+          <areas>
+            <h2>Areas</h2>
+            <p>This touch point is built from the following areas:</p>
+            <ul>
+              <li><state class="blue"></state> First reader plug in</li>
+              <li><state class="green"></state> First access tutorial screens</li>
+              <li><state class="red"></state> Does first transaction</li>
+            </ul>
+            <new>
+              <p>Add new areas to track additional aspects of the touch point.</p>
+              <input class="addible" placeholder="Area title..">
+              <button class="btn">Add area</button>
+            </new>
+          </areas>
+        </content>
+        <context>
+          <h2><i class="icon-bubble-conversation-1"></i> Notes & Context</h2>
+          <ul>
+            <li>
+              This touch point should be used to drive sales.
+              <p class="posted-by"><small>Posted by <strong>Katlego Maphai</strong></small></p>
+            </li>
+            <li>
+              This should be integrated into the support.
+              <p class="posted-by"><small>Posted by <strong>Kirsten Eddey</strong></small></p>
+            </li>
+          </ul>
+          <new>
+            <p>Add comments or notes here.</p>
+            <input class="addible" placeholder="Note / comment...">
+            <button class="btn btn-outline">+</button>
+          </new>
+        </context>
+      </touchpoint>
+    </box>
+  </overlay>
+</template>
