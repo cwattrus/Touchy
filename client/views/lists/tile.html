@@ -12,12 +12,7 @@
       <button class="invite-collaborator">Invite collaborator</button><br>
       <small>or, <span class="link toggle-share">cancel</span></small>
     </div>
-    <!-- <div class=" {{ lock_state }}">
-      <i class="icon-lock-1 locked"></i>
-      {{> lockpad}}
-    </div> -->
     <div class="name-container">
-      <!-- <span class="highlight"></span> -->
       <input class="name" type="text" value="{{this.name}}"/>
     </div>
     {{> menu}}
@@ -27,9 +22,7 @@
       {{/each}}
     </ul>
     <input class="new-item" type="text" value="" placeholder="Touch point..." />
-  </div>
-
-  {{> touchpoint}}
+  </div>  
 </template>
 
 <template name="menu">

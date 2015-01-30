@@ -87,8 +87,10 @@ Template.item.events({
   },
   'click .expand': function(event, template) {
     event.preventDefault();
+    Session.set("stage", this.list);
+    Session.set("touchpoint", this._id);
     Router.go("point", {_id:this._id});
-    var overlayElem = $(".item-overlay");
+    var overlayElem = $("overlay");
     overlayElem.toggleClass("active");
   },
 })

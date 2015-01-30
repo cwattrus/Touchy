@@ -1,16 +1,32 @@
 overlay {
-  display: block;
+  display: none;
   width: 100%;
   height: 100%;
   position: fixed;
   top: 0px;
   left: 0px;
-  background: rgba(0,0,0,0.05);
+  background: rgba(0, 0, 0, 0.19);
   z-index: 800;
+
+  &.active {
+    display: block;
+  }
 
   * {
     box-sizing: border-box;
     vertical-align: top;
+  }
+
+  .close {
+    cursor: pointer;
+    float: right;
+    padding-top: 10px;
+  }
+
+  .scroll-height-80 {
+      height: 80%;
+      overflow: scroll;
+      margin-top: 0;
   }
 
   box {
@@ -27,6 +43,7 @@ overlay {
     ul {
       list-style: none;
       padding-left: 0px;
+      margin-bottom: 0px;
     }
   }
 
@@ -103,20 +120,26 @@ overlay {
       width: 20px;
       vertical-align: middle;
       margin: 0 15px;
+      border: 1px solid #D3D3D3;
 
       &.green {
+        border: none;
         background-color: #03d689;
       }
       &.blue {
+        border: none;
         background-color: #C3DFFF;
       }
       &.yellow {
+        border: none;
         background-color: #FFEA7D;
       }
       &.orange {
+        border: none;
         background-color: #FFC76C;
       }
       &.red {
+        border: none;
         background-color: #FF7D7D;
       }
     }

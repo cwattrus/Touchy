@@ -1,37 +1,40 @@
 <template name="touchpoint">
-  <overlay>
-    <box>
+  <overlay class="animated fadeIn">
+    <box class="animated bounceInDown">
       <touchpoints>
         <ul>
-          <li class="title">BECOMING A MERCHANT</li>
-          <li>First login</li>
-          <li class="active">First access merchant portal</li>
-          <li>First End of Day</li>
-          <li>Your first settlement</li>
+          <li class="title">{{stage}}</li>
+        </ul>
+        <ul class="scroll-height-80">
+          {{#each touchpoints}}
+            <li>{{this.name}}</li>
+          {{/each}}
+          <li class="{{isActiveTouchPoint touchpoint}}">First access merchant portal</li>
         </ul>
       </touchpoints>
       <touchpoint>
         <content>
           <header>
-            <h1><state class="green"></state>First access merchant portal</h1>
+            <h1><state class="{{this.color}} color"></state>{{touchpoint}}</h1>
             <i class="icon-cloud-checked"></i>
           </header>
           <areas>
             <h2>Areas</h2>
             <p>This touch point is built from the following areas:</p>
             <ul>
-              <li><state class="blue"></state> First reader plug in</li>
-              <li><state class="green"></state> First access tutorial screens</li>
-              <li><state class="red"></state> Does first transaction</li>
+              {{#each areas}}
+                {{> arealistitem}}
+              {{/each}}
             </ul>
             <new>
               <p>Add new areas to track additional aspects of the touch point.</p>
-              <input class="addible" placeholder="Area title..">
-              <button class="btn">Add area</button>
+              <input class="addible newAreaName" placeholder="Area title..">
+              <button class="btn addArea">Add area</button>
             </new>
           </areas>
         </content>
         <context>
+          <i class="icon-delete close"></i>
           <h2><i class="icon-bubble-conversation-1"></i> Notes & Context</h2>
           <ul>
             <li>
@@ -52,4 +55,8 @@
       </touchpoint>
     </box>
   </overlay>
+</template>
+
+<template name="arealistitem">
+    <li><state class="{{this.color}} color"></state> {{this.name}}</li>
 </template>
