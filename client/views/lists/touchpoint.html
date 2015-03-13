@@ -5,17 +5,16 @@
         <ul>
           <li class="title">{{stage}}</li>
         </ul>
-        <ul class="scroll-height-80">
+        <ul class="scroll-height-80 quickLink">
           {{#each touchpoints}}
-            <li>{{this.name}}</li>
+            <li class="{{isActiveTouchPoint touchpoint}} touchPointLink"><a href="/points/{{this._id}}">{{this.name}}</a></li>
           {{/each}}
-          <li class="{{isActiveTouchPoint touchpoint}}">First access merchant portal</li>
         </ul>
       </touchpoints>
       <touchpoint>
         <content>
           <header>
-            <h1><state class="{{this.color}} color"></state>{{touchpoint}}</h1>
+            <h1><state class="{{this.color}} color"></state>{{this.name}}</h1>
             <i class="icon-cloud-checked"></i>
           </header>
           <areas>

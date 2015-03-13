@@ -6,10 +6,7 @@ Template.touchpoint.helpers({
     }
   },
   'touchpoint' : function() {
-    var touchpoint = Items.findOne({"_id": Session.get("touchpoint")});
-    if(touchpoint) {
-      return touchpoint.name;
-    }
+    return this._id;
   },
   'touchpoints' : function() {
     var touchpoints = Items.find({"list" : Session.get("stage")})
@@ -18,23 +15,23 @@ Template.touchpoint.helpers({
     }
   },
   'areas' : function() {
-    var touchpoint = Session.get("touchpoint");
+    var touchpoint = this._id;
     if(touchpoint) {
       return Areas.find({"archive" : {$ne : true}, "item" : touchpoint}, {sort: {"index": 1}});
     }
   },
   'isActiveTouchPoint' : function(touchpoint) {
-    console.log(this);
-    // console.log(touchpoint.name);
-    // console.log(touchpoint);
-    // if(touchpoint==this._id) {
-    //   return true;
-    // }
-    // return false;
-  }
+    console.log("Checking active point");
+    if(Session.get("touchpoint")==this._id) {
+      return "active";
+    }
+  },
 });
 
 Template.touchpoint.events({
+  'click.touchPointLink':function() {
+    Session.set("touchpoint", this._id);
+  },
   'click .close' : function(event, template) {
     var overlayElem = $("overlay");
     overlayElem.toggleClass("active");
