@@ -41,9 +41,11 @@
         {{> comment this}}
       {{/each}}
     </ul>
-    <h3>Add a note</h3>
-    <input type="text" class="new-comment new-comment-text" placeholder="Note text..." />
-    <button class="post-comment">Add note <i class="icon-enter"></i></button>
+    <new>
+      <p>Add comments or notes here.</p>
+      <input class="addible new-comment-text" placeholder="Note / comment...">
+      <button class="btn btn-outline post-comment">+</button>
+    </new>
     <div class="clear"></div>
   </div>
 </template>
