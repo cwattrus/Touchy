@@ -16,6 +16,11 @@ enableSorting = function createSortable(el) {
     onEnd: function (/**Event*/evt) {
       evt.oldIndex;  // element's old index within parent
       evt.newIndex;  // element's new index within parent
+      console.dir(evt.item.parentElement.id);
+      console.dir(evt.item.id);
+      // var oldIndexItem = Items.findOne({"list": evt.item.parentElement.id, "index": evt.newIndex});
+      Items.update({"_id":evt.item.id}, {$set: {"list": evt.item.parentElement.id, "index": evt.newIndex}});
+      // Items.update({"_id":oldIndexItem._id}, {$set: {"index": evt.oldIndex}});
     },
 
     // Changed sorting within list
@@ -23,6 +28,8 @@ enableSorting = function createSortable(el) {
       var itemEl = evt.item;  // dragged HTMLElement
       evt.oldIndex;  // element's old index within parent
       evt.newIndex;  // element's new index within parent
+
+
 
       var oldIndexItem = Items.findOne({"list": evt.srcElement.parentElement.id, "index": evt.newIndex});
       Items.update({"_id":oldIndexItem._id}, {$set: {"index": evt.oldIndex}});
