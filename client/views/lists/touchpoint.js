@@ -21,7 +21,6 @@ Template.touchpoint.helpers({
     }
   },
   'isActiveTouchPoint' : function(touchpoint) {
-    console.log("Checking active point");
     if(Session.get("touchpoint")==this._id) {
       return "active";
     }
@@ -57,10 +56,15 @@ Template.touchpoint.events({
     }
   },
   'click .addArea': function(event, template) {
-    var area = $('.newAreaName').val();
-    console.log(area);
+    var area = $('.newAreaName');
     createArea(this, area);
   },
+  'keypress input.newAreaName': function (event, template) {
+    if (event.which === 13) {
+      var area = $('.newAreaName');
+      createArea(this, area);
+    }
+  }
 });
 
 Template.arealistitem.events({
@@ -87,7 +91,8 @@ Template.arealistitem.events({
 });
 
 function createArea(item, comment) {
-  check(comment, String);
-  Areas.insert({"item": item._id, "name": comment})
+  check(comment.val(), String);
+  var index = Areas.find({"item":item._id}).count();
+  Areas.insert({"item": item._id, "name": comment.val(), "index": index+1})
   comment.val("");
 }

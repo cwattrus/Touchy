@@ -1,38 +1,6 @@
 <template name="itemExpanded">
-  <!-- <div class="touch-point-expanded">
-    <div class="item-overlay overlay">
-      <div class="up-level"><i class="icon-up"></i> Back to flow</div>
-      <div class="touch-point-container">
-        <div class="column-left">
-          {{> editableItem this}}
-          <button class="archive"><i class="icon-briefcase archive bounceIn"></i> Archive touch point</button>
-          {{> areas}}
-        </div>
-        <div class="column-right">
-          <div class="comments">
-            {{> comments this}}
-          </div>
-        </div>
-      </div>
-    </div>
-  </div> -->
-
   {{> touchpoint}}
 </template>
-
-<template name="areas">
-  <div class="areas">
-    <ul>
-      {{#each areas}}
-        {{> area this}}
-      {{/each}}
-    </ul>
-
-    <i class="icon-bubble-chat-1 new-area"></i><input type="text" class="new-area new-area-text" placeholder="Area name..." />
-    <button class="post-area">Add area <i class="icon-enter"></i></button>
-  </div>
-</template>
-
 
 <template name="comments">
   <div class="comments">
@@ -52,14 +20,9 @@
 
 <template name="comment">
   <li class="comment {{this.color}}">
-    <div><input class="comment-text" value="{{this.name}}"></div>
+    <div class="comment-text" >{{this.name}}</div>
     <div class="person"><small>Posted by <strong>{{this.person}}</strong><i class="archive-comment icon-briefcase pull-right"></i></small></div>
-
   </li>
-</template>
-
-<template name="area">
-  <li class="area {{this.color}}"><input class="area-text" value="{{this.name}}"><i class="archive-area icon-briefcase"></i></li>
 </template>
 
 <template name="item">

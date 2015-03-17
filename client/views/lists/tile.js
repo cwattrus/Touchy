@@ -31,28 +31,26 @@ Template.tile.events({
     toggleMenu(template.find(".menu"), template.find(".menu-toggle"));
     resetWidth();
   },
-  'click .incognito': function(event, template) {
-    toggleIncognito(this);
-    toggleMenu(template.find(".menu"), template.find(".menu-toggle"))
-  },
-  'click .unlock-step-1': function(event, template) {
-    toggleLock(template);
-    toggleMenu(template.find(".menu"), template.find(".menu-toggle"))
-  },
-  'click .share': function(event, template) {
-    $(template.find(".sharing-pane")).toggleClass("hidden");
-    toggleMenu(template.find(".menu"), template.find(".menu-toggle"));
-  },
-  'click .toggle-share': function(event, template) {
-    $(template.find(".sharing-pane")).toggleClass("hidden");
-  },
-  'click .invite-collaborator': function(event, template) {
-    var collaboratorEmail = $(template.find(".collaborator-email")).val();
-    // check(collaboratorEmail, email);
-    console.log(collaboratorEmail);
-    Meteor.call("addCollaborator", this._id, collaboratorEmail);
-    $(template.find(".sharing-pane")).toggleClass("hidden");
-  }
+  // 'click .incognito': function(event, template) {
+  //   toggleIncognito(this);
+  //   toggleMenu(template.find(".menu"), template.find(".menu-toggle"))
+  // },
+  // 'click .unlock-step-1': function(event, template) {
+  //   toggleLock(template);
+  //   toggleMenu(template.find(".menu"), template.find(".menu-toggle"))
+  // },
+  // 'click .share': function(event, template) {
+  //   $(template.find(".sharing-pane")).toggleClass("hidden");
+  //   toggleMenu(template.find(".menu"), template.find(".menu-toggle"));
+  // },
+  // 'click .toggle-share': function(event, template) {
+  //   $(template.find(".sharing-pane")).toggleClass("hidden");
+  // },
+  // 'click .invite-collaborator': function(event, template) {
+  //   var collaboratorEmail = $(template.find(".collaborator-email")).val();
+  //   Meteor.call("addCollaborator", this._id, collaboratorEmail);
+  //   $(template.find(".sharing-pane")).toggleClass("hidden");
+  // }
 })
 
 function toggleMenu(elem, menuIcon) {
@@ -110,6 +108,10 @@ Template.tile.helpers({
     if(this.owner==Meteor.userId()) return true;
     return false;
   },
+  'empty':function() {
+    if(Items.find({"list":this._id, "archive": {$ne: true}}).fetch().length==0) return true;
+    return false;
+  }
 });
 
 Template.menu.helpers({
@@ -127,7 +129,6 @@ function newItem(listId, itemValue) {
   check(listId, String);
   check(itemValue, String);
   var newItemIndex = Items.find({"list":listId}).count();
-  // console.log(newItemIndex);
   if (itemValue.length>0) Items.insert({"owner": Meteor.userId(), "list":listId, "name": itemValue, "index":newItemIndex});
 }
 
