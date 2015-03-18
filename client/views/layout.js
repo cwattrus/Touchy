@@ -15,7 +15,7 @@ Template.layout.events({
     Flows.insert({"name":"New Flow"});
   },
   'click .main-flow': function() {
-    Session.set("flow", null);
+    Router.go("points");
   },
   'click .new-list-icon': function() {
     var flow = Session.get("flow");
@@ -23,7 +23,7 @@ Template.layout.events({
       var newIndex = Lists.find({"owner": Meteor.userId(), "flow": flow}).count();
       Lists.insert({"owner": Meteor.userId(),"name": "New Touch Point", "index": newIndex, "flow": flow},
         function() {
-          window.scrollTo(document.body.scrollWidth, document.body.scrollWidth);
+          window.scrollTo(document.body.scrollWidth, 0);
           resetWidth();
         }
       );
@@ -32,13 +32,11 @@ Template.layout.events({
       var newIndex = Lists.find({"owner": Meteor.userId(), "flow" : {$exists : false}}).count();
       Lists.insert({"owner": Meteor.userId(),"name": "New Touch Point", "index": newIndex},
         function() {
-          window.scrollTo(document.body.scrollWidth, document.body.scrollWidth);
+          window.scrollTo(document.body.scrollWidth, 0);
           resetWidth();
         }
       );
     }
-
-
   },
   'click .logout-button': function() {
     Meteor.logout();
@@ -58,7 +56,7 @@ Template.layout.rendered = function() {
 Template.flow.events({
   'click .flow' : function(event, template) {
     if(!event.isDefaultPrevented()) {
-      Session.set("flow", this._id);
+      Router.go('flow', {_id: this._id}) ;
     }
   },
   'click .editFlowName' : function(event, template) {

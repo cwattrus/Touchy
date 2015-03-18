@@ -20,11 +20,26 @@ Router.map(function() {
   this.route('points', {
     path: '/points',
     template: 'points',
+    onBeforeAction: function() {
+      Session.set("flow", undefined);
+      resetWidth();
+      this.next();
+    }
+  });
+  this.route('flow', {
+    path: '/flow/:_id',
+    template: 'points',
+    data: function() {
+      Session.set("flow", this.params._id);
+      resetWidth();
+      return Lists.findOne({"flow":this.params._id});
+    },
   });
   this.route('point', {
     path: '/points/:_id',
     template: 'points',
     data: function() {
+      Session.set("touchpoint", this.params._id);
       return Items.findOne(this.params._id)
     },
   });

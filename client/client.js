@@ -1,5 +1,8 @@
 resetWidth = function resetPageWidth() {
-  var width = 500 * Lists.find({"archive" : {$ne: true}}).count();
+  if(Session.get("flow")) {
+    var width = 500 * Lists.find({"archive" : {$ne: true}, "flow": Session.get("flow")}).count();
+  }
+  else var width = 500 * Lists.find({"archive" : {$ne: true}, "flow":{$exists: false}}).count();
   $(".page").width(width.toString() + "px");
 }
 

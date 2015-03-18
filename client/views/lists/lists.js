@@ -7,7 +7,3 @@ Template.points.helpers({
     else return Lists.find({"archive" : {$ne : true}, "flow": {$exists : false}}, {sort: {"index": 1}});
   }
 });
-
-Template.points.rendered = function() {
-
-}
