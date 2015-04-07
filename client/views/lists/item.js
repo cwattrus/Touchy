@@ -21,10 +21,6 @@ Template.itemExpanded.events({
   },
 });
 
-Template.item.rendered = function() {
-
-  createSortable();
-}
 
 function editArea(area, areaElement) {
   var areaText = areaElement.val();

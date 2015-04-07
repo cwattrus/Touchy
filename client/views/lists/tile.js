@@ -104,7 +104,6 @@ Template.item.events({
 
 Template.tile.helpers({
   'items': function() {
-    sortList();
     return Items.find({"list":this._id, "archive": {$ne: true}}, { sort : { "index" : 1 } });
   },
   'incognito_state': function() {
