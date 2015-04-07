@@ -36,7 +36,7 @@
           <i class="icon-delete close"></i>
           <h2><i class="icon-bubble-conversation-1"></i> Notes & Context</h2>
 
-            {{> comments}}        
+            {{> comments}}
         </context>
       </touchpoint>
     </box>
@@ -44,5 +44,13 @@
 </template>
 
 <template name="arealistitem">
-    <li><state class="{{this.color}} color"></state> {{this.name}}</li>
+    <li>
+      <state class="{{this.color}} color"></state> {{this.name}}
+      <!-- <div class="pull-right">
+        <i class="menu-toggle icon-ellipsis"></i>
+        <div class="pop-over-menu">
+
+        </div>
+      </div> -->
+    </li>
 </template>
