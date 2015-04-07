@@ -91,15 +91,7 @@ Template.item.events({
        Items.update({"_id": this._id}, {$set : {"color": color}});
      }
   },
-  'click .expand': function(event, template) {
-    if(!event.isDefaultPrevented()) {
-      Session.set("stage", this.list);
-      Session.set("touchpoint", this._id);
-      Router.go("point", {_id:this._id});
-      var overlayElem = $("overlay");
-      overlayElem.toggleClass("active");
-    }
-  },
+
 })
 
 Template.tile.helpers({
