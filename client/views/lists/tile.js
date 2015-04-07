@@ -63,33 +63,42 @@ function toggleMenu(elem, menuIcon) {
 Template.item.events({
   'click .item': function(event, template) {
     if(!event.isDefaultPrevented()) {
-        var colors = ["red", "orange", "yellow", "blue", "green", "white", ];
-        var color = this.color;
-
-        if(color) {
-          var currentColorIndex = colors.indexOf(color);
-          if(currentColorIndex<5){
-            newColorIndex = currentColorIndex + 1;
-          }
-          else {
-            newColorIndex = 0;
-          }
-          color = colors[newColorIndex];
-          Items.update({"_id": this._id}, {$set : {"color": color}});
-        }
-        else {
-          color = "red";
-          Items.update({"_id": this._id}, {$set : {"color": color}});
-        }
+      Session.set("stage", this.list);
+      Session.set("touchpoint", this._id);
+      Router.go("point", {_id:this._id});
+      var overlayElem = $("overlay");
+      overlayElem.toggleClass("active");
     }
   },
-  'click .expand': function(event, template) {
+  'click state': function(event, template) {
     event.preventDefault();
-    Session.set("stage", this.list);
-    Session.set("touchpoint", this._id);
-    Router.go("point", {_id:this._id});
-    var overlayElem = $("overlay");
-    overlayElem.toggleClass("active");
+     var colors = ["red", "orange", "yellow", "blue", "green", "white", ];
+     var color = this.color;
+
+     if(color) {
+       var currentColorIndex = colors.indexOf(color);
+       if(currentColorIndex<5){
+         newColorIndex = currentColorIndex + 1;
+       }
+       else {
+         newColorIndex = 0;
+       }
+       color = colors[newColorIndex];
+       Items.update({"_id": this._id}, {$set : {"color": color}});
+     }
+     else {
+       color = "red";
+       Items.update({"_id": this._id}, {$set : {"color": color}});
+     }
+  },
+  'click .expand': function(event, template) {
+    if(!event.isDefaultPrevented()) {
+      Session.set("stage", this.list);
+      Session.set("touchpoint", this._id);
+      Router.go("point", {_id:this._id});
+      var overlayElem = $("overlay");
+      overlayElem.toggleClass("active");
+    }
   },
 })
 

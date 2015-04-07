@@ -26,7 +26,7 @@
 </template>
 
 <template name="item">
-  <li class="item {{this.color}}" data-id="{{this.index}}" id="{{this._id}}"><div class="touch-point-text">{{this.name}}</div> <i class="icon-open bounceIn expand"></i></li>
+  <li class="item" data-id="{{this.index}}" id="{{this._id}}"><state class="{{this.color}} color"></state> <div class="touch-point-text">{{this.name}}</div> <i class="icon-open bounceIn expand"></i></li>
 </template>
 
 <template name="editableItem">

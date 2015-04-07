@@ -21,9 +21,9 @@ Template.itemExpanded.events({
   },
 });
 
-Template.item.rendered() {
+Template.item.rendered = function() {
 
-  createSortable()
+  createSortable();
 }
 
 function editArea(area, areaElement) {
