@@ -18,10 +18,18 @@
 
 <template name="menu">
   <i class="icon-setting-adjustment menu-toggle"></i>
-  <div class="menu animated flipInY">
+  <div class="menu menu-tile animated flipInY">
     <ul>
       <li>You cannot undo archive at the moment. Use with care!</li>
-      <li class="archive warning"><i class="icon-briefcase"></i> Archive</li>
+      <li class="warning relatively-positioned">
+        <div class="start-archive">
+          <i class="icon-briefcase"></i> Archive
+        </div>
+        <div class="manual-validation archive-stage animated fadeInRight">
+          <div class="label">Sure?</div> <button class="btn yes">Yes</button> <button class="btn btn-primary no">No</button>
+        </div>
+      </li>
+
     </ul>
   </div>
 </template>

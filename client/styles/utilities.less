@@ -22,3 +22,32 @@
 .pull-right {
   float: right;
 }
+
+.relatively-positioned {
+  position: relative;
+}
+
+.manual-validation {
+  display: none;
+  background: white;
+  position: absolute;
+  width: 255px;
+  right: 50px;
+  top: 2px;
+
+  button {
+    width: auto;
+    min-width: 0px;
+    margin: 5px;
+  }
+
+  &.archive-area {
+    right: 10px;
+  }
+
+  .label {
+    padding-top: 14px;
+    padding-right: 10px;
+    display:inline-block;
+  }
+}

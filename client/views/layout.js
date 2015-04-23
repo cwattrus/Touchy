@@ -1,9 +1,10 @@
 Template.layout.events({
-  'click .menu': function() {
+  'click .sidebar-toggle': function() {
       $(".sidebar").addClass("active");
       $(".sidebar").removeClass("bounceOutLeft");
       $(".sidebar").addClass("bounceInLeft");
       $(".sidebar").show();
+      console.log("Menu opened");
   },
   'click .view-toggle': function() {
     Session.set("tiled", true);

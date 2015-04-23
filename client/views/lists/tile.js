@@ -24,12 +24,19 @@ Template.tile.events({
     }
   },
   'click .menu-toggle' : function(event, template) {
-     toggleMenu(template.find(".menu"), template.find(".menu-toggle"))
+     toggleMenu(template.find(".menu-tile"), template.find(".menu-toggle"))
+     console.log("asdasd");
   },
-  'click .archive':function(event, template) {
+  'click .start-archive' : function(event, template) {
+    template.$(".archive-stage ").show();
+  },
+  'click .yes':function(event, template) {
     archiveList(this._id);
-    toggleMenu(template.find(".menu"), template.find(".menu-toggle"));
+    toggleMenu(template.find(".menu-tile"), template.find(".menu-toggle"));
     resetWidth();
+  },
+  'click .no': function(event, template) {
+    template.$(".manual-validation").hide();
   },
   // 'click .incognito': function(event, template) {
   //   toggleIncognito(this);
