@@ -9,7 +9,7 @@ Template.touchpoint.helpers({
     return this._id;
   },
   'touchpoints' : function() {
-    var touchpoints = Items.find({"list" : Session.get("stage")})
+    var touchpoints = Items.find({"list" : Session.get("stage"), "archive" : {$ne : true}})
     if(touchpoints) {
       return touchpoints;
     }
@@ -64,7 +64,16 @@ Template.touchpoint.events({
       var area = $('.newAreaName');
       createArea(this, area);
     }
-  }
+  },
+  'click .start-archive': function(event, template) {
+    template.$(".archive-touchpoint").show();
+  },
+  'click .yes': function(event, template) {
+    Items.update({"_id": this._id}, {$set : {"archive": true}});
+  },
+  'click .no': function(event, template) {
+    template.$(".manual-validation").hide();
+  },
 });
 
 Template.arealistitem.events({
@@ -87,7 +96,16 @@ Template.arealistitem.events({
       color = "red";
       Areas.update({"_id": this._id}, {$set : {"color": color}});
     }
-  }
+  },
+  'click .start-area-archive': function(event, template) {
+    template.$(".archive-area ").show();
+  },
+  'click .yes': function(event, template) {
+    Areas.update({"_id": this._id}, {$set : {"archive": true}});
+  },
+  'click .no': function(event, template) {
+    template.$(".manual-validation").hide();
+  },
 });
 
 function createArea(item, comment) {

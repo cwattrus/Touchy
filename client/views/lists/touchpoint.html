@@ -15,6 +15,10 @@
         <content>
           <header>
             <h1><state class="{{this.color}} color"></state>{{this.name}}</h1>
+            <i class="icon-briefcase start-archive"></i>
+            <div class="manual-validation archive-touchpoint animated fadeInRight">
+              <div class="label">Sure?</div> <button class="btn yes">Yes</button> <button class="btn btn-primary no">No</button>
+            </div>
             <i class="icon-cloud-checked"></i>
           </header>
           <areas>
@@ -35,7 +39,6 @@
         <context>
           <i class="icon-delete close"></i>
           <h2><i class="icon-bubble-conversation-1"></i> Notes & Context</h2>
-
             {{> comments}}
         </context>
       </touchpoint>
@@ -44,13 +47,13 @@
 </template>
 
 <template name="arealistitem">
-    <li>
+    <li class="areaListItem">
       <state class="{{this.color}} color"></state> {{this.name}}
-      <!-- <div class="pull-right">
-        <i class="menu-toggle icon-ellipsis"></i>
-        <div class="pop-over-menu">
-
+      <div class="pull-right">
+        <i class="icon-briefcase start-archive start-area-archive"></i>
+        <div class="manual-validation archive-area animated fadeInRight">
+          <div class="label">Sure?</div> <button class="btn yes">Yes</button> <button class="btn btn-primary no">No</button>
         </div>
-      </div> -->
+      </div>
     </li>
 </template>

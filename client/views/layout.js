@@ -5,6 +5,9 @@ Template.layout.events({
       $(".sidebar").addClass("bounceInLeft");
       $(".sidebar").show();
   },
+  'click .view-toggle': function() {
+    Session.set("tiled", true);
+  },
   'click .close-menu': function() {
     $(".sidebar").removeClass("active");
     $(".sidebar").removeClass("bounceInLeft");
@@ -46,6 +49,9 @@ Template.layout.events({
 Template.layout.helpers({
   'flows': function() {
     return Flows.find({});
+  },
+  'tiled': function() {
+    return Session.get("tiled");
   }
 })
 

@@ -111,6 +111,9 @@ Template.tile.helpers({
   'empty':function() {
     if(Items.find({"list":this._id, "archive": {$ne: true}}).fetch().length==0) return true;
     return false;
+  },
+  'tiled': function() {
+    return Session.get("tiled");
   }
 });
 
