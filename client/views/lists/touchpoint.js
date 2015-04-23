@@ -66,7 +66,9 @@ Template.touchpoint.events({
     }
   },
   'click .start-archive': function(event, template) {
-    template.$(".archive-touchpoint").show();
+    if(!event.isDefaultPrevented()) {
+      template.$(".archive-touchpoint").show();
+    }
   },
   'click .yes': function(event, template) {
     Items.update({"_id": this._id}, {$set : {"archive": true}});
@@ -98,6 +100,7 @@ Template.arealistitem.events({
     }
   },
   'click .start-area-archive': function(event, template) {
+    event.preventDefault();
     template.$(".archive-area ").show();
   },
   'click .yes': function(event, template) {
