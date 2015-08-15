@@ -6,8 +6,8 @@ Template.layout.events({
       $(".sidebar").show();
       console.log("Menu opened");
   },
-  'click .view-toggle': function() {
-    Session.set("tiled", true);
+  'click .flow': function() {
+
   },
   'click .close-menu': function() {
     $(".sidebar").removeClass("active");
@@ -53,8 +53,12 @@ Template.layout.helpers({
   },
   'tiled': function() {
     return Session.get("tiled");
+  },
+  'isFlowActive': function(flowId) {
+    if(Session.get("flow")==flowId) return true;
+    else return false;
   }
-})
+});
 
 Template.layout.rendered = function() {
   resetWidth();
@@ -74,6 +78,13 @@ Template.flow.events({
     editFlow(this._id, flowText.val());
   },
 });
+
+Template.flow.helpers({
+  'isFlowActive': function(flowId) {
+    if(Session.get("flow")==flowId) return true;
+    else return false;
+  }
+})
 
 function editFlow(flow, flowText) {
   check(flowText, String);

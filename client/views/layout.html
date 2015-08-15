@@ -7,7 +7,6 @@
 <template name="layout">
   <div class="menu sidebar-toggle hide">
     <div class="menu icon-arrange-2-1"></div>
-    <div class="icon-upload-8 view-toggle"></div>
   </div>
   <div class="sidebar animated bounceInLeft">
     <img src="/images/logo_menu.png" />
@@ -17,7 +16,7 @@
     <h1>Your flows</h1>
     <small>Your first flow is automatically labelled main flow. This will become editable soon.</small>
     <ul>
-      <li><button class="btn btn-secondary main-flow">Main flow</button></li>
+      <li><button class="btn btn-secondary main-flow flow  {{#if isFlowActive this._id}}active{{/if}}">Main flow</button></li>
       {{#each flows}}
         {{> flow this}}
       {{/each}}
@@ -51,5 +50,5 @@
 </template>
 
 <template name="flow">
-  <li><button class="btn btn-secondary flow"><input class="editFlowName" value="{{this.name}}"></button></li>
+  <li><button class="btn btn-secondary flow {{#if isFlowActive this._id}}active{{/if}}"><input class="editFlowName" value="{{this.name}}"><i class="icon-arrow-right pull-right"></i> </button></li>
 </template>

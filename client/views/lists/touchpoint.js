@@ -8,6 +8,9 @@ Template.touchpoint.helpers({
   'touchpoint' : function() {
     return this._id;
   },
+  'title': function() {
+    if($('.touchpoint-name').text()!=this.name) return this.name;
+  },
   'touchpoints' : function() {
     var touchpoints = Items.find({"list" : Session.get("stage"), "archive" : {$ne : true}})
     if(touchpoints) {
@@ -72,11 +75,23 @@ Template.touchpoint.events({
   },
   'click .yes': function(event, template) {
     Items.update({"_id": this._id}, {$set : {"archive": true}});
+    template.$(".archive-touchpoint").hide();
+    var overlayElem = $("overlay");
+    overlayElem.toggleClass("active");
   },
   'click .no': function(event, template) {
     template.$(".manual-validation").hide();
   },
+  'keyup .touchpoint-name': function(event, template) {
+    var touchpointName = $('.touchpoint-name').val();
+    editItemName(this._id, touchpointName);
+  },
 });
+
+function editItemName(itemId, nameText) {
+  check(nameText, String);
+  Items.update({"_id": itemId}, {$set : {"name": nameText}});
+}
 
 Template.arealistitem.events({
   'click .color' : function() {
