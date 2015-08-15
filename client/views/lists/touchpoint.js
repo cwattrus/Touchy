@@ -86,6 +86,23 @@ Template.touchpoint.events({
     var touchpointName = $('.touchpoint-name').val();
     editItemName(this._id, touchpointName);
   },
+  'click .post-comment': function(event, template) {
+    var comment = $(template.find('.new-comment-text'));
+    createComment(this, comment);
+  },
+  'click .archive-comment': function(event, template) {
+    event.preventDefault();
+    Comments.update({"_id": this._id}, {$set : {"archive": true}});
+  },
+  'keyup .new-comment-text': function(event, template) {
+    if (event.which === 13) {
+      var comment = $(template.find('.new-comment-text'));
+      createComment(this, comment);
+    }
+  },
+  'click .new-comment-text': function(event, template) {
+    event.preventDefault();
+  }
 });
 
 function editItemName(itemId, nameText) {
@@ -137,5 +154,12 @@ function createArea(item, comment) {
   check(comment.val(), String);
   var index = Areas.find({"item":item._id}).count();
   Areas.insert({"item": item._id, "name": comment.val(), "index": index+1})
+  comment.val("");
+}
+
+function createComment(item, comment) {
+  var commentText = comment.val();
+  check(commentText, String);
+  Comments.insert({"item": item._id, "name": commentText, "person": Meteor.user().profile.name })
   comment.val("");
 }

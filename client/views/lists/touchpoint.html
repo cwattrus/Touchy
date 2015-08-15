@@ -13,34 +13,60 @@
       </touchpoints>
       <touchpoint>
         <content>
-          <header>
-            <h1><state class="{{this.color}} color"></state><input type="text" class="touchpoint-name" value="{{this.name}}"/></h1>
-            <i class="icon-briefcase start-archive"></i>
-            <div class="manual-validation archive-touchpoint animated fadeInRight">
-              <div class="label">Sure?</div> <button class="btn yes">Yes</button> <button class="btn btn-primary no">No</button>
-            </div>
-            <i class="icon-cloud-checked"></i>
-          </header>
-          <areas>
-            <h2>Areas</h2>
-            <p>This touch point is built from the following areas:</p>
-            <ul>
-              {{#each areas}}
-                {{> arealistitem}}
-              {{/each}}
-            </ul>
-            <new>
-              <p>Add new areas to track additional aspects of the touch point.</p>
-              <input class="addible newAreaName" placeholder="Area title..">
-              <button class="btn addArea">Add area</button>
-            </new>
-          </areas>
-        </content>
-        <context>
           <i class="icon-delete close"></i>
-          <h2><i class="icon-bubble-conversation-1"></i> Notes & Context</h2>
-            {{> comments}}
-        </context>
+
+          <div class="row">
+            <div class="two-thirds column">
+              <header>
+                <div class="row">
+                <div class="ten columns">
+                  <h1><state class="{{this.color}} color"></state><input type="text" class="touchpoint-name" value="{{this.name}}"/></h1>
+                </div>
+                <div class="one column">
+                  <i class="icon-briefcase start-archive"></i>
+                  <div class="manual-validation archive-touchpoint animated fadeInRight">
+                    <div class="label">Sure?</div> <button class="btn yes">Yes</button> <button class="btn btn-primary no">No</button>
+                  </div>
+                </div>
+                <div class="one column">
+                  <i class="icon-cloud-checked"></i>
+                </div>
+              </div>
+              </header>
+              <areas>
+                <h2>Areas</h2>
+                <p>This touch point is built from the following areas:</p>
+                <ul>
+                  {{#each areas}}
+                    {{> arealistitem}}
+                  {{/each}}
+                </ul>
+              </areas>
+            </div>
+            <div class="one-third column">
+              <context>
+                <h2><i class="icon-bubble-conversation-1"></i> Notes & Context</h2>
+                  {{> comments}}
+              </context>
+            </div>
+          </div>
+            <div class="row">
+              <div class="two-thirds column">
+                <new>
+                    <p>Add new areas to track additional aspects of the touch point.</p>
+                    <input class="addible newAreaName" placeholder="Area title..">
+                    <button class="btn addArea">Add area</button>
+                  </new>
+              </div>
+              <div class="one-third column">
+                <new>
+                  <p>Add comments or notes here.</p>
+                  <input class="addible new-comment-text" placeholder="Note / comment...">
+                  <button class="btn btn-outline post-comment">+</button>
+                </new>
+              </div>
+          </div>
+        </content>
       </touchpoint>
     </box>
   </overlay>
@@ -52,7 +78,7 @@
         <div class="one column">
           <state class="{{this.color}} color"></state>
         </div>
-        <div class="nine columns padded-left">
+        <div class="ten columns padded-left">
           {{{text}}}
         </div>
         <div class="one column">
@@ -66,4 +92,23 @@
 
       </div>
     </li>
+</template>
+
+<template name="comments">
+  <div class="comments">
+    <ul>
+      {{#each comments}}
+        {{> comment this}}
+      {{/each}}
+    </ul>
+
+    <div class="clear"></div>
+  </div>
+</template>
+
+<template name="comment">
+  <li class="comment {{this.color}}">
+    <div class="comment-text" >{{{comment}}}</div>
+    <div class="person"><small>Posted by <strong>{{this.person}}</strong><i class="archive-comment icon-briefcase pull-right"></i></small></div>
+  </li>
 </template>

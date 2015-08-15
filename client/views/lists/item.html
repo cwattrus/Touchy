@@ -2,28 +2,7 @@
   {{> touchpoint}}
 </template>
 
-<template name="comments">
-  <div class="comments">
-    <ul>
-      {{#each comments}}      
-        {{> comment this}}
-      {{/each}}
-    </ul>
-    <new>
-      <p>Add comments or notes here.</p>
-      <input class="addible new-comment-text" placeholder="Note / comment...">
-      <button class="btn btn-outline post-comment">+</button>
-    </new>
-    <div class="clear"></div>
-  </div>
-</template>
 
-<template name="comment">
-  <li class="comment {{this.color}}">
-    <div class="comment-text" >{{{comment}}}</div>
-    <div class="person"><small>Posted by <strong>{{this.person}}</strong><i class="archive-comment icon-briefcase pull-right"></i></small></div>
-  </li>
-</template>
 
 <template name="item">
   <li class="item" data-id="{{this.index}}" id="{{this._id}}"><state class="{{this.color}} color"></state> <div class="touch-point-text">{{this.name}}</div> <i class="icon-open bounceIn expand"></i></li>
