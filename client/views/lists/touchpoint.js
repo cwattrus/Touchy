@@ -93,6 +93,13 @@ function editItemName(itemId, nameText) {
   Items.update({"_id": itemId}, {$set : {"name": nameText}});
 }
 
+Template.arealistitem.helpers({
+  'text': function() {
+    var text = this.name;
+    return linkfy(text);
+  }
+})
+
 Template.arealistitem.events({
   'click .color' : function() {
     var colors = ["red", "orange", "yellow", "blue", "green", "white", ];

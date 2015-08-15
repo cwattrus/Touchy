@@ -48,12 +48,22 @@
 
 <template name="arealistitem">
     <li class="areaListItem">
-      <state class="{{this.color}} color"></state> {{this.name}}
-      <div class="pull-right">
-        <i class="icon-briefcase start-archive start-area-archive"></i>
-        <div class="manual-validation archive-area animated fadeInRight">
-          <div class="label">Sure?</div> <button class="btn yes">Yes</button> <button class="btn btn-primary no">No</button>
+      <div class="row">
+        <div class="one column">
+          <state class="{{this.color}} color"></state>
         </div>
+        <div class="nine columns padded-left">
+          {{{text}}}
+        </div>
+        <div class="one column">
+          <i class="icon-briefcase start-archive start-area-archive"></i>
+          <div class="manual-validation archive-area animated fadeInRight">
+            <div class="label">Sure?</div> <button class="btn yes">Yes</button> <button class="btn btn-primary no">No</button>
+          </div>
+        </div>
+      </div>
+      <div class="pull-right">
+
       </div>
     </li>
 </template>

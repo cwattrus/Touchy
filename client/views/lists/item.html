@@ -5,7 +5,7 @@
 <template name="comments">
   <div class="comments">
     <ul>
-      {{#each comments}}
+      {{#each comments}}      
         {{> comment this}}
       {{/each}}
     </ul>
@@ -20,7 +20,7 @@
 
 <template name="comment">
   <li class="comment {{this.color}}">
-    <div class="comment-text" >{{this.name}}</div>
+    <div class="comment-text" >{{{comment}}}</div>
     <div class="person"><small>Posted by <strong>{{this.person}}</strong><i class="archive-comment icon-briefcase pull-right"></i></small></div>
   </li>
 </template>

@@ -33,7 +33,7 @@ overlay {
     cursor: pointer;
     position: absolute;
     right: 67px;
-    top: 11px;
+    top: 2px;
   }
 
   box {
@@ -62,14 +62,24 @@ overlay {
     width: 80%;
     margin: 0;
     margin-left: -5px;
-    padding: 10px 15px 10px 30px;
+    padding: 21px 15px 10px 30px;
+
+    .comments {
+      margin-top: 20px;
+    }
+
+    areas {
+      state {
+        margin-left: 9px;        
+      }
+    }
 
     header {
       i {
         color: rgba(0,0,0,0.3);
         font-size: 28px;
         position: absolute;
-        top: 15px;
+        top: 6px;
         right: 15px;
       }
 
@@ -77,6 +87,7 @@ overlay {
         font-weight: 500;
         font-size: 18pt;
         padding: 0;
+        margin-top: 0px;
       }
     }
 
@@ -111,6 +122,7 @@ overlay {
 
     context {
       padding-left: 20px;
+      padding-top: 7px;
 
       h2 {
         font-weight: 500;
@@ -135,6 +147,7 @@ overlay {
 
     .areaListItem {
       position: relative;
+      overflow-wrap: break-word;
 
       .start-archive {
         position: absolute;
@@ -168,6 +181,7 @@ overlay {
             max-width: 800px;
             padding: 15px 10px;
             margin-top: 9px;
+            margin-left: 18px;
           }
         }
       }
@@ -201,6 +215,11 @@ overlay {
         border: 1px solid #50E3C2;
         background: white;
         color: #50E3C2;
+
+        &:hover {
+          background: #50E3C2;
+          color: white;
+        }
       }
     }
   }

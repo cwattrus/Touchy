@@ -74,6 +74,13 @@ Template.comment.events({
   },
 });
 
+Template.comment.helpers({
+  'comment': function() {
+    var text = this.name;
+    return linkfy(text);
+  }
+})
+
 
 function editComment(comment, commentElement) {
   var commentText = commentElement.val();
