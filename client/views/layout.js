@@ -69,6 +69,12 @@ Template.layout.rendered = function() {
   resetWidth();
 }
 
+Template.loading.rendered = function() {
+  particlesJS.load('particles-js', '/particles.json', function() {
+  console.log('callback - particles.js config loaded');
+});
+}
+
 Template.flow.events({
   'click .flow' : function(event, template) {
     if(!event.isDefaultPrevented()) {
