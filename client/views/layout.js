@@ -4,7 +4,6 @@ Template.layout.events({
       $(".sidebar").removeClass("bounceOutLeft");
       $(".sidebar").addClass("bounceInLeft");
       $(".sidebar").show();
-      console.log("Menu opened");
   },
   'click .flow': function() {
 
@@ -40,7 +39,7 @@ Template.layout.events({
       );
     }
   },
-  'click .logout-button': function() {
+  'click .logout': function() {
     Meteor.logout();
   }
 })
@@ -69,7 +68,7 @@ Template.layout.rendered = function() {
   resetWidth();
 }
 
-Template.loading.rendered = function() {
+Template.particles.rendered = function() {
   particlesJS.load('particles-js', '/particles.json', function() {
   console.log('callback - particles.js config loaded');
 });

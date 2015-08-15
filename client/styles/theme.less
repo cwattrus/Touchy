@@ -72,8 +72,6 @@ button {
 
 
 .splash {
-  background: url(/images/splash.jpg);
-  background-size: cover;
   height: 100%;
   width: 100%;
   position: absolute;
@@ -163,67 +161,6 @@ button {
       }
     }
   }
-  .popover {
-    background: #D8D8D8;
-    color: black;
-    min-width: 50px;
-    position: absolute;
-    padding: 5px 15px 5px 10px;
-
-    &.new-list-popover {
-      top: 12px;
-      left: -90px;
-      display: none;
-    }
-    &.logout-popover {
-      top: 74px;
-      left: -80px;
-      display: none;
-    }
-
-    &:after, &:before {
-      left: 100%;
-	    top: 50%;
-    	border: solid transparent;
-    	content: " ";
-    	height: 0;
-    	width: 0;
-    	position: absolute;
-    	pointer-events: none;
-    }
-
-    &:after {
-    	border-color: rgba(136, 183, 213, 0);
-    	border-left-color: #D8D8D8;
-    	border-width: 5px;
-    	margin-top: -5px;
-    }
-    &:before {
-      border-color: rgba(216, 216, 216, 0);
-    	border-left-color: #D8D8D8;
-    	border-width: 5px;
-    	margin-top: -5px;
-    }
-  }
-
-  .logout-button {
-    position: relative; left: 13px;
-    display: none;
-    margin-top: 10px;
-    color: #666;
-    font-size: 28px;
-    background-color: white;
-    border-radius: 100px;
-    width: 50px;
-    height: 50px;
-    padding-left: 11px;
-    box-sizing: border-box;
-    padding-top: 8px;
-    box-shadow: 0px 2px 1px 0px rgba(0,0,0,.26);
-    cursor: pointer;
-  }
-
-
 }
 
 button.btn-secondary {

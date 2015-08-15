@@ -5,6 +5,10 @@
 </head>
 
 <template name="loading">
+  {{> particles}}
+</template>
+
+<template name="particles">
   <div id="particles-js" class="animated fadeIn"></div>
 </template>
 
@@ -30,10 +34,7 @@
   </div>
   {{#if currentUser}}
   <div class="actions">
-    <div class="new-list-icon icon-add"></div>
-    <div class="popover new-list-popover">New List</div>
-    <div class="logout-button icon-lock-1"></div>
-    <div class="popover logout-popover">Logout</div>
+    <div class="new-list-icon icon-add"></div>    
   </div>
   {{else}}
   <nav class="navbar">

@@ -1,5 +1,5 @@
 Router.configure({
-  layoutTemplate: 'layout',
+  // layoutTemplate: 'layout',
   progressSpinner : false
 });
 
@@ -15,7 +15,7 @@ Router.onBeforeAction(
 
 
 Router.route('/flow/:_id', {
-  layout: "default",
+  layoutTemplate: 'layout',
   loadingTemplate: 'loading',
   subscriptions: function() {
     this.subscribe('lists');
@@ -37,7 +37,7 @@ Router.route('/flow/:_id', {
 });
 
 Router.route('/points', {
-  layout: "default",
+  layoutTemplate: 'layout',
   loadingTemplate: 'loading',
   subscriptions: function() {
     this.subscribe('lists');
@@ -55,20 +55,38 @@ Router.route('/points', {
   }
 });
 
+Router.route('/points/:_id', {
+  layoutTemplate: 'layout',
+  loadingTemplate: 'loading',
+  subscriptions: function() {
+    this.subscribe('lists');
+  },
+  waitOn: function () {
+    return Meteor.subscribe('lists');
+  },
+  data: function() {
+    Session.set("touchpoint", this.params._id);
+    return Items.findOne(this.params._id)
+  },
+  onBeforeAction: function() {
+    resetWidth();
+    this.next();
+  },
+  name: "point",
+  action: function () {
+    Session.set("touchpoint", this.params._id);
+    this.render('points');
+  }
+});
+
+
 
 Router.map(function() {
   this.route('splash', {
     path: '/',
-    template: 'splash'
+    template: 'splash',
   });
-  this.route('point', {
-    path: '/points/:_id',
-    template: 'points',
-    data: function() {
-      Session.set("touchpoint", this.params._id);
-      return Items.findOne(this.params._id)
-    },
-  });
+
   this.route('loginConfig', {
     path: '/login/config',
     template: 'loginConfig'
