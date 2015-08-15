@@ -10,15 +10,13 @@ Template.layout.events({
 
   },
   'click .close-menu': function() {
-    $(".sidebar").removeClass("active");
-    $(".sidebar").removeClass("bounceInLeft");
-    $(".sidebar").addClass("bounceOutLeft");
-    $(".sidebar").show();
+    closeSidebar();
   },
   'click .new-flow': function() {
     Flows.insert({"name":"New Flow"});
   },
   'click .main-flow': function() {
+    closeSidebar();
     Router.go("points");
   },
   'click .new-list-icon': function() {
@@ -47,6 +45,13 @@ Template.layout.events({
   }
 })
 
+function closeSidebar() {
+  $(".sidebar").removeClass("active");
+  $(".sidebar").removeClass("bounceInLeft");
+  $(".sidebar").addClass("bounceOutLeft");
+  $(".sidebar").show();
+}
+
 Template.layout.helpers({
   'flows': function() {
     return Flows.find({});
@@ -67,7 +72,8 @@ Template.layout.rendered = function() {
 Template.flow.events({
   'click .flow' : function(event, template) {
     if(!event.isDefaultPrevented()) {
-      Router.go('flow', {_id: this._id}) ;
+      closeSidebar();
+      Router.go('flow', {_id: this._id});
     }
   },
   'click .editFlowName' : function(event, template) {
