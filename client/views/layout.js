@@ -76,6 +76,7 @@ Template.particles.rendered = function() {
 
 Template.flow.events({
   'click .flow' : function(event, template) {
+    console.log(event.which);
     if(!event.isDefaultPrevented()) {
       closeSidebar();
       Router.go('flow', {_id: this._id});
