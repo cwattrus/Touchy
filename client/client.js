@@ -41,16 +41,18 @@ enableSorting = function createSortable(el) {
       var itemEl = evt.item;  // dragged HTMLElement
       evt.oldIndex;  // element's old index within parent
       evt.newIndex;  // element's new index within parent
+      if(evt.srcElement) {
+        var oldIndexItem = Items.findOne({"list": evt.srcElement.id, "index": evt.newIndex});
 
-      var oldIndexItem = Items.findOne({"list": evt.srcElement.id, "index": evt.newIndex});
+        if(oldIndexItem) {
+          $("#" + event.srcElement.id + " li").each(
+            function(index) {
+              Items.update({"_id":$(this).attr("id")}, {$set: {"index": index}});
+            }
+          )
+        }
+      }  
 
-      if(oldIndexItem) {
-        $("#" + event.srcElement.id + " li").each(
-          function(index) {
-            Items.update({"_id":$(this).attr("id")}, {$set: {"index": index}});
-          }
-        )
-      }
     },
     onFilter: function (/**Event*/evt) {
       var itemEl = evt.item;  // HTMLElement receiving the `mousedown|tapstart` event.

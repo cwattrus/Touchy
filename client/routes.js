@@ -50,8 +50,11 @@ Router.route('/points', {
   },
   name: "points",
   action: function () {
-    Session.set("flow", undefined);
     this.render('points');
+    this.render('nothing', {
+       to: 'touchpointContainer',
+       data: function () { return Items.findOne(this.params._id)}
+     });
   }
 });
 
@@ -74,12 +77,14 @@ Router.route('/points/:_id', {
   },
   name: "point",
   action: function () {
+    this.render('touchpoint', {
+       to: 'touchpointContainer',
+       data: function () { return Items.findOne(this.params._id)}
+     });
     Session.set("touchpoint", this.params._id);
     this.render('points');
   }
 });
-
-
 
 Router.map(function() {
   this.route('splash', {

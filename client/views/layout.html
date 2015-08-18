@@ -34,7 +34,7 @@
   </div>
   {{#if currentUser}}
   <div class="actions">
-    <div class="new-list-icon icon-add"></div>    
+    <div class="new-list-icon icon-add"></div>
   </div>
   {{else}}
   <nav class="navbar">
@@ -49,6 +49,7 @@
   <div class="page">
     {{>yield}}
   </div>
+  {{> yield region='touchpointContainer'}}
   <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,800' rel='stylesheet' type='text/css'>
   <link href="https://fontastic.s3.amazonaws.com/pEqu8kpiTd9wEGeJgtA4b4/icons.css" rel="stylesheet">
   <link href='http://fonts.googleapis.com/css?family=Raleway:400,100,600' rel='stylesheet' type='text/css'>
@@ -56,4 +57,8 @@
 
 <template name="flow">
   <li><button class="btn btn-secondary flow {{#if isFlowActive this._id}}active{{/if}}"><input class="editFlowName" value="{{this.name}}"><i class="icon-arrow-right pull-right"></i> </button></li>
+</template>
+
+<template name="nothing">
+
 </template>

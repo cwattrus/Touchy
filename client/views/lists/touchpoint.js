@@ -35,8 +35,11 @@ Template.touchpoint.events({
     Session.set("touchpoint", this._id);
   },
   'click .close' : function(event, template) {
-    var overlayElem = $("overlay");
-    overlayElem.toggleClass("active");
+    if(Session.get("flow")!=undefined){
+      Router.go('flow', {_id: Session.get("flow")});
+    }
+    else Router.go('points');  
+
   },
   'click .color' : function() {
     var colors = ["red", "orange", "yellow", "blue", "green", "white", ];

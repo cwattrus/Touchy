@@ -16,6 +16,7 @@ Template.layout.events({
   },
   'click .main-flow': function() {
     closeSidebar();
+    Session.set("flow", undefined);
     Router.go("points");
   },
   'click .new-list-icon': function() {

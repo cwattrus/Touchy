@@ -73,8 +73,8 @@ Template.item.events({
       Session.set("stage", this.list);
       Session.set("touchpoint", this._id);
       Router.go("point", {_id:this._id});
-      var overlayElem = $("overlay");
-      overlayElem.toggleClass("active");
+      // var overlayElem = $("overlay");
+      // overlayElem.toggleClass("active");
     }
   },
   'click state': function(event, template) {
