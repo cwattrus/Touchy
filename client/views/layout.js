@@ -21,8 +21,9 @@ Template.layout.events({
   },
   'click .new-list-icon': function() {
     var flow = Session.get("flow");
+    var newIndex;
     if(flow) {
-      var newIndex = Lists.find({"owner": Meteor.userId(), "flow": flow}).count();
+      newIndex = Lists.find({"owner": Meteor.userId(), "flow": flow}).count();
       Lists.insert({"owner": Meteor.userId(),"name": "New Touch Point", "index": newIndex, "flow": flow},
         function() {
           window.scrollTo(document.body.scrollWidth, 0);
@@ -31,7 +32,7 @@ Template.layout.events({
       );
     }
     else {
-      var newIndex = Lists.find({"owner": Meteor.userId(), "flow" : {$exists : false}}).count();
+      newIndex = Lists.find({"owner": Meteor.userId(), "flow" : {$exists : false}}).count();
       Lists.insert({"owner": Meteor.userId(),"name": "New Touch Point", "index": newIndex},
         function() {
           window.scrollTo(document.body.scrollWidth, 0);

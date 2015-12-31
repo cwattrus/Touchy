@@ -5,4 +5,4 @@ Template.splash.events({
     });
 
   }
-})
+});

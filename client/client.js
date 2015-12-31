@@ -1,10 +1,11 @@
 resetWidth = function resetPageWidth() {
+  var width;
   if(Session.get("flow")) {
-    var width = 500 * Lists.find({"archive" : {$ne: true}, "flow": Session.get("flow")}).count();
+    width = 500 * Lists.find({"archive" : {$ne: true}, "flow": Session.get("flow")}).count();
   }
-  else var width = 500 * Lists.find({"archive" : {$ne: true}, "flow":{$exists: false}}).count();
+  else width = 500 * Lists.find({"archive" : {$ne: true}, "flow":{$exists: false}}).count();
   $(".page").width(width.toString() + "px");
-}
+};
 
 enableSorting = function createSortable(el) {
   var sortable = new Sortable(el, {
@@ -16,22 +17,22 @@ enableSorting = function createSortable(el) {
 
     // dragging ended
     onEnd: function (/**Event*/evt) {
-      evt.oldIndex;  // element's old index within parent
-      evt.newIndex;  // element's new index within parent
+      // evt.oldIndex;  // element's old index within parent
+      // evt.newIndex;  // element's new index within parent
 
-      if(evt.item.parentElement!=null) {
+      if(evt.item.parentElement!==null) {
         $("#" + $(evt.item.parentElement).attr("id") + " li").each(
           function(index) {
             Items.update({"_id":$(this).attr("id")}, {$set: {"index": index, "list":$(evt.item.parentElement).attr("id")}});
           }
-        )
+        );
       }
       else {
         $("#" +  $("#" + evt.item.id).parent().attr("id") + " li").each(
           function(index) {
             Items.update({"_id":$(this).attr("id")}, {$set: {"index": index,  "list":$(evt.item.parentElement).attr("id")}});
           }
-        )
+        );
       }
 
     },
@@ -39,8 +40,8 @@ enableSorting = function createSortable(el) {
     // Changed sorting within list
     onUpdate: function (/**Event*/evt) {
       var itemEl = evt.item;  // dragged HTMLElement
-      evt.oldIndex;  // element's old index within parent
-      evt.newIndex;  // element's new index within parent
+      // evt.oldIndex;  // element's old index within parent
+      // evt.newIndex;  // element's new index within parent
       if(evt.srcElement) {
         var oldIndexItem = Items.findOne({"list": evt.srcElement.id, "index": evt.newIndex});
 
@@ -49,13 +50,13 @@ enableSorting = function createSortable(el) {
             function(index) {
               Items.update({"_id":$(this).attr("id")}, {$set: {"index": index}});
             }
-          )
+          );
         }
-      }  
+      }
 
     },
     onFilter: function (/**Event*/evt) {
       var itemEl = evt.item;  // HTMLElement receiving the `mousedown|tapstart` event.
     }
   });
-}
+};
